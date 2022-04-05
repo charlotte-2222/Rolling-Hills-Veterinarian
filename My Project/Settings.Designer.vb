@@ -57,11 +57,33 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\C-Final-DB.md"& _ 
-            "f;Integrated Security=True;Connect Timeout=30")>  _
-        Public ReadOnly Property C_Final_DBConnectionString() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\VetDBProj.mdf"& _ 
+            ";Integrated Security=True;Connect Timeout=30")>  _
+        Public ReadOnly Property VetDBProjString() As String
             Get
-                Return CType(Me("C_Final_DBConnectionString"),String)
+                Return CType(Me("VetDBProjString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Clancy.mdf;In"& _ 
+            "tegrated Security=True;Connect Timeout=30")>  _
+        Public ReadOnly Property VBDBOverwrite() As String
+            Get
+                Return CType(Me("VBDBOverwrite"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\VBvetProject."& _ 
+            "mdf;Integrated Security=True;Connect Timeout=30")>  _
+        Public ReadOnly Property VBvetProjectConnectionString() As String
+            Get
+                Return CType(Me("VBvetProjectConnectionString"),String)
             End Get
         End Property
     End Class
