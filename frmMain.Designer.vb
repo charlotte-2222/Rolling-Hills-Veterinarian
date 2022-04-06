@@ -22,10 +22,11 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.logLbl = New System.Windows.Forms.Label()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.patientsTab = New System.Windows.Forms.TabControl()
+        Me.ownerPage = New System.Windows.Forms.TabPage()
         Me.btnInsertOwner = New System.Windows.Forms.Button()
         Me.txtOwnerPhone = New System.Windows.Forms.TextBox()
         Me.txtOwnerEmail = New System.Windows.Forms.TextBox()
@@ -37,8 +38,8 @@ Partial Class frmMain
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ownLabel = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
+        Me.patientsTab.SuspendLayout()
+        Me.ownerPage.SuspendLayout()
         Me.SuspendLayout()
         '
         'logLbl
@@ -53,35 +54,36 @@ Partial Class frmMain
         Me.logLbl.TabIndex = 0
         Me.logLbl.Text = "Logged into RH Vet Service"
         '
-        'TabControl1
+        'patientsTab
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(702, 192)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(374, 446)
-        Me.TabControl1.TabIndex = 1
+        Me.patientsTab.Controls.Add(Me.ownerPage)
+        Me.patientsTab.Controls.Add(Me.TabPage2)
+        Me.patientsTab.Location = New System.Drawing.Point(702, 192)
+        Me.patientsTab.Name = "patientsTab"
+        Me.patientsTab.SelectedIndex = 0
+        Me.patientsTab.Size = New System.Drawing.Size(374, 446)
+        Me.patientsTab.TabIndex = 1
         '
-        'TabPage1
+        'ownerPage
         '
-        Me.TabPage1.Controls.Add(Me.btnInsertOwner)
-        Me.TabPage1.Controls.Add(Me.txtOwnerPhone)
-        Me.TabPage1.Controls.Add(Me.txtOwnerEmail)
-        Me.TabPage1.Controls.Add(Me.txtOwnerDoB)
-        Me.TabPage1.Controls.Add(Me.txtOwnerFullName)
-        Me.TabPage1.Controls.Add(Me.Label4)
-        Me.TabPage1.Controls.Add(Me.Label3)
-        Me.TabPage1.Controls.Add(Me.Label2)
-        Me.TabPage1.Controls.Add(Me.Label1)
-        Me.TabPage1.Controls.Add(Me.ownLabel)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(366, 420)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "New Patient"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.ownerPage.AllowDrop = True
+        Me.ownerPage.Controls.Add(Me.btnInsertOwner)
+        Me.ownerPage.Controls.Add(Me.txtOwnerPhone)
+        Me.ownerPage.Controls.Add(Me.txtOwnerEmail)
+        Me.ownerPage.Controls.Add(Me.txtOwnerDoB)
+        Me.ownerPage.Controls.Add(Me.txtOwnerFullName)
+        Me.ownerPage.Controls.Add(Me.Label4)
+        Me.ownerPage.Controls.Add(Me.Label3)
+        Me.ownerPage.Controls.Add(Me.Label2)
+        Me.ownerPage.Controls.Add(Me.Label1)
+        Me.ownerPage.Controls.Add(Me.ownLabel)
+        Me.ownerPage.Location = New System.Drawing.Point(4, 22)
+        Me.ownerPage.Name = "ownerPage"
+        Me.ownerPage.Padding = New System.Windows.Forms.Padding(3)
+        Me.ownerPage.Size = New System.Drawing.Size(366, 420)
+        Me.ownerPage.TabIndex = 0
+        Me.ownerPage.Text = "New Patient"
+        Me.ownerPage.UseVisualStyleBackColor = True
         '
         'btnInsertOwner
         '
@@ -96,7 +98,7 @@ Partial Class frmMain
         'txtOwnerPhone
         '
         Me.txtOwnerPhone.BackColor = System.Drawing.SystemColors.Info
-        Me.txtOwnerPhone.Location = New System.Drawing.Point(149, 259)
+        Me.txtOwnerPhone.Location = New System.Drawing.Point(149, 184)
         Me.txtOwnerPhone.Name = "txtOwnerPhone"
         Me.txtOwnerPhone.Size = New System.Drawing.Size(127, 20)
         Me.txtOwnerPhone.TabIndex = 8
@@ -104,7 +106,7 @@ Partial Class frmMain
         'txtOwnerEmail
         '
         Me.txtOwnerEmail.BackColor = System.Drawing.SystemColors.Info
-        Me.txtOwnerEmail.Location = New System.Drawing.Point(149, 204)
+        Me.txtOwnerEmail.Location = New System.Drawing.Point(149, 138)
         Me.txtOwnerEmail.Name = "txtOwnerEmail"
         Me.txtOwnerEmail.Size = New System.Drawing.Size(127, 20)
         Me.txtOwnerEmail.TabIndex = 7
@@ -112,7 +114,7 @@ Partial Class frmMain
         'txtOwnerDoB
         '
         Me.txtOwnerDoB.BackColor = System.Drawing.SystemColors.Info
-        Me.txtOwnerDoB.Location = New System.Drawing.Point(149, 149)
+        Me.txtOwnerDoB.Location = New System.Drawing.Point(149, 230)
         Me.txtOwnerDoB.Name = "txtOwnerDoB"
         Me.txtOwnerDoB.Size = New System.Drawing.Size(127, 20)
         Me.txtOwnerDoB.TabIndex = 6
@@ -129,7 +131,7 @@ Partial Class frmMain
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(43, 257)
+        Me.Label4.Location = New System.Drawing.Point(43, 182)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(57, 20)
         Me.Label4.TabIndex = 4
@@ -139,7 +141,7 @@ Partial Class frmMain
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(43, 202)
+        Me.Label3.Location = New System.Drawing.Point(43, 137)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(50, 20)
         Me.Label3.TabIndex = 3
@@ -149,7 +151,7 @@ Partial Class frmMain
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(43, 147)
+        Me.Label2.Location = New System.Drawing.Point(43, 227)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(100, 20)
         Me.Label2.TabIndex = 2
@@ -187,28 +189,29 @@ Partial Class frmMain
         '
         'frmMain
         '
+        Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(1076, 640)
-        Me.Controls.Add(Me.TabControl1)
+        Me.Controls.Add(Me.patientsTab)
         Me.Controls.Add(Me.logLbl)
         Me.ForeColor = System.Drawing.Color.Black
         Me.MaximizeBox = False
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " Rolling Hills"
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
+        Me.patientsTab.ResumeLayout(False)
+        Me.ownerPage.ResumeLayout(False)
+        Me.ownerPage.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents logLbl As Label
-    Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents patientsTab As TabControl
+    Friend WithEvents ownerPage As TabPage
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents txtOwnerPhone As TextBox
     Friend WithEvents txtOwnerEmail As TextBox
