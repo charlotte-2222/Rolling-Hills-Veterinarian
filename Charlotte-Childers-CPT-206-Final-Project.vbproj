@@ -196,11 +196,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="VBvetProject.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="VBvetProject.mdf" />
     <Content Include="VBvetProject_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>VBvetProject.mdf</DependentUpon>
     </Content>
   </ItemGroup>

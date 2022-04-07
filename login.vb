@@ -14,25 +14,28 @@ Public Class login
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
         Dim db As String = Path.Combine(Directory.GetCurrentDirectory(), "VBvetProject.mdf")
         Dim connection As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & (db) & ";Integrated Security=True")
-        Dim command As New SqlCommand("select * from login where user_name = @username and pass_word = @pass", connection)
+        Using cmd As New SqlCommand("select * from login where user_name = @username and pass_word = @pass", connection)
 
-        command.Parameters.Add("@username", SqlDbType.VarChar).Value = txtUsername.Text
-        command.Parameters.Add("@pass", SqlDbType.VarChar).Value = txtPassword.Text
-        Dim adapter As New SqlDataAdapter(command)
+            cmd.Parameters.AddWithValue("@username", txtUsername.Text)
+            cmd.Parameters.AddWithValue("@pass", txtPassword.Text)
+            Dim adapter As New SqlDataAdapter(cmd)
 
-        Dim table As New DataTable()
-        adapter.Fill(table)
+            connection.Open()
+            cmd.ExecuteNonQuery()
 
+            Dim dt As New DataTable()
+            adapter.Fill(dt)
 
-        If table.Rows.Count() <= 0 Then
-            MessageBox.Show("Username or Password are Invalid")
+            connection.Close()
+            If dt.Rows.Count <= 0 Then
+                MessageBox.Show("Username or Password are Invalid")
+            Else
+                Me.Hide()
+                frmMain.Show()
 
-        Else
-            Me.Hide()
-            frmMain.Show()
+            End If
 
-        End If
-
+        End Using
 
 
 

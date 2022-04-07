@@ -15,54 +15,30 @@ Public Class frmMain
 
 
     Private Sub btnInsertOwner_Click(sender As Object, e As EventArgs) Handles btnInsertOwner.Click
+
         Dim db As String = Path.Combine(Directory.GetCurrentDirectory(), "VBvetProject.mdf")
-        Dim sqlConnection1 As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & (db) & ";Integrated Security=True")
+        Dim conn As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & (db) & ";Integrated Security=True")
+
+        Using cmd As New SqlCommand("INSERT INTO owners VALUES (@fullname,@email,@phone,@dob)", conn)
 
 
-
-        Try
-            'Dim cmd As New SqlCommand
-            'cmd.CommandType = CommandType.Text
-            'sqlConnection1.Open()
-
-            'Dim fullname As New String(txtOwnerFullName.Text)
-            'Dim email As New String(txtOwnerEmail.Text)
-            'Dim phone As New String(txtOwnerPhone.Text)
-            'Dim dob As New String(txtOwnerDoB.Text)
-
-
-            'cmd.CommandText = "INSERT INTO owners (fullname, email, phone, dob) Values ('" & txtOwnerFullName.Text & "', '" & txtOwnerEmail.Text & "', '" & txtOwnerPhone.Text & "', '" & txtOwnerDoB.Text & "')"
-            'cmd.Connection = sqlConnection1
-
-            Dim cmd As New SqlCommand("INSERT INTO owners (fullname, email, phone, dob) VALUES (@fullname,@email,@phone,@dob)", sqlConnection1)
-
-
-            cmd.Parameters.Add("@fullname", SqlDbType.VarChar).Value = txtOwnerFullName.Text
-            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = txtOwnerEmail.Text
-            cmd.Parameters.Add("@phone", SqlDbType.VarChar).Value = txtOwnerPhone.Text
-            cmd.Parameters.Add("@dob", SqlDbType.VarChar).Value = txtOwnerDoB.Text
-
-
-            'cmd.ExecuteNonQuery()
+            cmd.Parameters.AddWithValue("@fullname", txtOwnerFullName.Text)
+            cmd.Parameters.AddWithValue("@email", txtOwnerEmail.Text)
+            cmd.Parameters.AddWithValue("@phone", txtOwnerPhone.Text)
+            cmd.Parameters.AddWithValue("@dob", txtOwnerDoB.Text)
             Dim adapter As New SqlDataAdapter(cmd)
-            Dim table As New DataTable()
-            adapter.Update(table)
-            'sqlConnection1.Close()
 
-            MessageBox.Show("New owner created!")
+            conn.Open()
+            cmd.ExecuteNonQuery()
+            Dim dt As New DataTable()
+            adapter.Update(dt)
+            conn.Close()
 
 
 
-        Catch ex As Exception
-            Throw ex
-            MessageBox.Show("Error running process")
+        End Using
 
-        End Try
-
-        ' Dim adapter As New SqlDataAdapter(command)
-        'Dim dataset As New DataSet()
-        'adapter.Fill(dataset)
-
+        MessageBox.Show("New owner created!")
 
     End Sub
 
