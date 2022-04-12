@@ -11,10 +11,11 @@
     <AssemblyName>Charlotte-Childers-CPT-206-Final-Project</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -135,10 +136,13 @@
     <Compile Include="SplashScreen.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VBvetProjectData.Designer.vb">
+    <Compile Include="_Vet_Clinic_RHDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VBvetProjectData.xsd</DependentUpon>
+      <DependentUpon>_Vet_Clinic_RHDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_Vet_Clinic_RHDataSet.vb">
+      <DependentUpon>_Vet_Clinic_RHDataSet.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -171,16 +175,16 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="VBvetProjectData.xsc">
-      <DependentUpon>VBvetProjectData.xsd</DependentUpon>
+    <None Include="_Vet_Clinic_RHDataSet.xsc">
+      <DependentUpon>_Vet_Clinic_RHDataSet.xsd</DependentUpon>
     </None>
-    <None Include="VBvetProjectData.xsd">
+    <None Include="_Vet_Clinic_RHDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>VBvetProjectData.Designer.vb</LastGenOutput>
+      <LastGenOutput>_Vet_Clinic_RHDataSet.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="VBvetProjectData.xss">
-      <DependentUpon>VBvetProjectData.xsd</DependentUpon>
+    <None Include="_Vet_Clinic_RHDataSet.xss">
+      <DependentUpon>_Vet_Clinic_RHDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -196,9 +200,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="VBvetProject.mdf" />
-    <Content Include="VBvetProject_log.ldf">
-      <DependentUpon>VBvetProject.mdf</DependentUpon>
+    <Content Include="Vet-Clinic-RH.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vet-Clinic-RH_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Vet-Clinic-RH.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

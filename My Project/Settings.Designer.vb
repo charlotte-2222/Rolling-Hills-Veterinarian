@@ -86,6 +86,17 @@ Namespace My
                 Return CType(Me("VBvetProjectConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Vet-Clinic-RH"& _ 
+            ".mdf;Integrated Security=True;Connect Timeout=30")>  _
+        Public ReadOnly Property Vet_Clinic_RHConnectionString() As String
+            Get
+                Return CType(Me("Vet_Clinic_RHConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

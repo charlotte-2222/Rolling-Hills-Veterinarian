@@ -12,9 +12,9 @@ Public Class login
     End Sub
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        Dim db As String = Path.Combine(Directory.GetCurrentDirectory(), "VBvetProject.mdf")
+        Dim db As String = Path.Combine(Directory.GetCurrentDirectory(), "Vet-Clinic-RH.mdf")
         Dim connection As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & (db) & ";Integrated Security=True")
-        Using cmd As New SqlCommand("select * from login where user_name = @username and pass_word = @pass", connection)
+        Using cmd As New SqlCommand("select * from login where username = @username and pass = @pass", connection)
 
             cmd.Parameters.AddWithValue("@username", txtUsername.Text)
             cmd.Parameters.AddWithValue("@pass", txtPassword.Text)
