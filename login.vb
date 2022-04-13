@@ -29,16 +29,18 @@ Public Class login
             connection.Close()
             If dt.Rows.Count <= 0 Then
                 MessageBox.Show("Username or Password are Invalid")
+                txtUsername.Clear()
+                txtPassword.Clear()
             Else
                 Me.Hide()
                 frmMain.Show()
+                frmMain.loginUser.Text = txtUsername.Text
+                txtUsername.Clear()
+                txtPassword.Clear()
 
             End If
 
         End Using
-
-
-
 
 
     End Sub
