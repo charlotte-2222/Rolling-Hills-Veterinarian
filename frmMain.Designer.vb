@@ -24,13 +24,17 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.logLbl = New System.Windows.Forms.Label()
-        Me.patientsTab = New System.Windows.Forms.TabControl()
+        Me.rhTabSuite = New System.Windows.Forms.TabControl()
         Me.ownerPage = New System.Windows.Forms.TabPage()
+        Me.btnLoadList = New System.Windows.Forms.Button()
+        Me.btnClear = New System.Windows.Forms.Button()
+        Me.lstDataCommit = New System.Windows.Forms.ListBox()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtPetBreed = New System.Windows.Forms.TextBox()
         Me.txtPetAge = New System.Windows.Forms.TextBox()
@@ -49,6 +53,8 @@ Partial Class frmMain
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ownLabel = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.apptTime = New System.Windows.Forms.DateTimePicker()
         Me.apptDate = New System.Windows.Forms.DateTimePicker()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtApptOwnerEmail = New System.Windows.Forms.TextBox()
@@ -73,6 +79,10 @@ Partial Class frmMain
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.OwnersidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FullnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AgeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmailDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnInsert = New System.Windows.Forms.Button()
         Me.txtPetOwner = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -90,12 +100,13 @@ Partial Class frmMain
         Me.OwnersTableAdapter = New Charlotte_Childers_CPT_206_Final_Project._Vet_Clinic_RHDataSetTableAdapters.ownersTableAdapter()
         Me.VetsTableAdapter = New Charlotte_Childers_CPT_206_Final_Project._Vet_Clinic_RHDataSetTableAdapters.vetsTableAdapter()
         Me.btnLogOut = New System.Windows.Forms.Button()
-        Me.OwnersidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FullnameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AgeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmailDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.loginUser = New System.Windows.Forms.Label()
-        Me.patientsTab.SuspendLayout()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.lblTime = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.apptList = New System.Windows.Forms.TabPage()
+        Me.btnAdminCtrl = New System.Windows.Forms.Button()
+        Me.rhTabSuite.SuspendLayout()
         Me.ownerPage.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.TxtboxEmailToolStrip.SuspendLayout()
@@ -121,19 +132,24 @@ Partial Class frmMain
         Me.logLbl.TabIndex = 0
         Me.logLbl.Text = "Logged into RH Vet Service  |"
         '
-        'patientsTab
+        'rhTabSuite
         '
-        Me.patientsTab.Controls.Add(Me.ownerPage)
-        Me.patientsTab.Controls.Add(Me.TabPage2)
-        Me.patientsTab.Location = New System.Drawing.Point(522, 12)
-        Me.patientsTab.Name = "patientsTab"
-        Me.patientsTab.SelectedIndex = 0
-        Me.patientsTab.Size = New System.Drawing.Size(554, 626)
-        Me.patientsTab.TabIndex = 0
+        Me.rhTabSuite.Controls.Add(Me.ownerPage)
+        Me.rhTabSuite.Controls.Add(Me.TabPage2)
+        Me.rhTabSuite.Controls.Add(Me.apptList)
+        Me.rhTabSuite.Location = New System.Drawing.Point(522, 12)
+        Me.rhTabSuite.Name = "rhTabSuite"
+        Me.rhTabSuite.SelectedIndex = 0
+        Me.rhTabSuite.Size = New System.Drawing.Size(554, 626)
+        Me.rhTabSuite.TabIndex = 0
         '
         'ownerPage
         '
         Me.ownerPage.AllowDrop = True
+        Me.ownerPage.Controls.Add(Me.btnLoadList)
+        Me.ownerPage.Controls.Add(Me.btnClear)
+        Me.ownerPage.Controls.Add(Me.lstDataCommit)
+        Me.ownerPage.Controls.Add(Me.Label11)
         Me.ownerPage.Controls.Add(Me.Label9)
         Me.ownerPage.Controls.Add(Me.txtPetBreed)
         Me.ownerPage.Controls.Add(Me.txtPetAge)
@@ -159,11 +175,49 @@ Partial Class frmMain
         Me.ownerPage.Text = "New Patient"
         Me.ownerPage.UseVisualStyleBackColor = True
         '
+        'btnLoadList
+        '
+        Me.btnLoadList.Font = New System.Drawing.Font("Segoe UI Semibold", 10.25!, System.Drawing.FontStyle.Bold)
+        Me.btnLoadList.Location = New System.Drawing.Point(369, 219)
+        Me.btnLoadList.Name = "btnLoadList"
+        Me.btnLoadList.Size = New System.Drawing.Size(114, 45)
+        Me.btnLoadList.TabIndex = 22
+        Me.btnLoadList.Text = "Load Items"
+        Me.btnLoadList.UseVisualStyleBackColor = True
+        '
+        'btnClear
+        '
+        Me.btnClear.Font = New System.Drawing.Font("Segoe UI Semibold", 10.25!, System.Drawing.FontStyle.Bold)
+        Me.btnClear.Location = New System.Drawing.Point(299, 549)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(114, 45)
+        Me.btnClear.TabIndex = 21
+        Me.btnClear.Text = "Clear All"
+        Me.btnClear.UseVisualStyleBackColor = True
+        '
+        'lstDataCommit
+        '
+        Me.lstDataCommit.FormattingEnabled = True
+        Me.lstDataCommit.Location = New System.Drawing.Point(332, 53)
+        Me.lstDataCommit.Name = "lstDataCommit"
+        Me.lstDataCommit.Size = New System.Drawing.Size(193, 160)
+        Me.lstDataCommit.TabIndex = 20
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Segoe UI Semibold", 13.25!, System.Drawing.FontStyle.Bold)
+        Me.Label11.Location = New System.Drawing.Point(327, 16)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(198, 25)
+        Me.Label11.TabIndex = 19
+        Me.Label11.Text = "Data to be Committed"
+        '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Segoe UI Semibold", 13.25!, System.Drawing.FontStyle.Bold)
-        Me.Label9.Location = New System.Drawing.Point(138, 268)
+        Me.Label9.Location = New System.Drawing.Point(22, 246)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(143, 25)
         Me.Label9.TabIndex = 18
@@ -172,7 +226,7 @@ Partial Class frmMain
         'txtPetBreed
         '
         Me.txtPetBreed.BackColor = System.Drawing.SystemColors.Info
-        Me.txtPetBreed.Location = New System.Drawing.Point(299, 399)
+        Me.txtPetBreed.Location = New System.Drawing.Point(183, 377)
         Me.txtPetBreed.Name = "txtPetBreed"
         Me.txtPetBreed.Size = New System.Drawing.Size(103, 20)
         Me.txtPetBreed.TabIndex = 6
@@ -180,7 +234,7 @@ Partial Class frmMain
         'txtPetAge
         '
         Me.txtPetAge.BackColor = System.Drawing.SystemColors.Info
-        Me.txtPetAge.Location = New System.Drawing.Point(275, 353)
+        Me.txtPetAge.Location = New System.Drawing.Point(159, 331)
         Me.txtPetAge.Name = "txtPetAge"
         Me.txtPetAge.Size = New System.Drawing.Size(127, 20)
         Me.txtPetAge.TabIndex = 5
@@ -188,7 +242,7 @@ Partial Class frmMain
         'txtEscapeAttempts
         '
         Me.txtEscapeAttempts.BackColor = System.Drawing.SystemColors.Info
-        Me.txtEscapeAttempts.Location = New System.Drawing.Point(299, 445)
+        Me.txtEscapeAttempts.Location = New System.Drawing.Point(183, 423)
         Me.txtEscapeAttempts.Name = "txtEscapeAttempts"
         Me.txtEscapeAttempts.Size = New System.Drawing.Size(103, 20)
         Me.txtEscapeAttempts.TabIndex = 7
@@ -196,7 +250,7 @@ Partial Class frmMain
         'txtPetName
         '
         Me.txtPetName.BackColor = System.Drawing.SystemColors.Info
-        Me.txtPetName.Location = New System.Drawing.Point(275, 307)
+        Me.txtPetName.Location = New System.Drawing.Point(159, 285)
         Me.txtPetName.Name = "txtPetName"
         Me.txtPetName.Size = New System.Drawing.Size(127, 20)
         Me.txtPetName.TabIndex = 4
@@ -205,7 +259,7 @@ Partial Class frmMain
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(154, 396)
+        Me.Label5.Location = New System.Drawing.Point(38, 374)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(63, 20)
         Me.Label5.TabIndex = 13
@@ -215,7 +269,7 @@ Partial Class frmMain
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(154, 351)
+        Me.Label6.Location = New System.Drawing.Point(38, 329)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(40, 20)
         Me.Label6.TabIndex = 12
@@ -225,7 +279,7 @@ Partial Class frmMain
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(154, 444)
+        Me.Label7.Location = New System.Drawing.Point(38, 422)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(124, 20)
         Me.Label7.TabIndex = 11
@@ -235,7 +289,7 @@ Partial Class frmMain
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(154, 306)
+        Me.Label8.Location = New System.Drawing.Point(38, 284)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(79, 20)
         Me.Label8.TabIndex = 10
@@ -244,7 +298,7 @@ Partial Class frmMain
         'btnInsertOwner
         '
         Me.btnInsertOwner.Font = New System.Drawing.Font("Segoe UI Semibold", 10.25!, System.Drawing.FontStyle.Bold)
-        Me.btnInsertOwner.Location = New System.Drawing.Point(265, 549)
+        Me.btnInsertOwner.Location = New System.Drawing.Point(149, 549)
         Me.btnInsertOwner.Name = "btnInsertOwner"
         Me.btnInsertOwner.Size = New System.Drawing.Size(114, 45)
         Me.btnInsertOwner.TabIndex = 9
@@ -254,7 +308,7 @@ Partial Class frmMain
         'txtOwnerEmail
         '
         Me.txtOwnerEmail.BackColor = System.Drawing.SystemColors.Info
-        Me.txtOwnerEmail.Location = New System.Drawing.Point(260, 128)
+        Me.txtOwnerEmail.Location = New System.Drawing.Point(144, 99)
         Me.txtOwnerEmail.Name = "txtOwnerEmail"
         Me.txtOwnerEmail.Size = New System.Drawing.Size(127, 20)
         Me.txtOwnerEmail.TabIndex = 1
@@ -262,7 +316,7 @@ Partial Class frmMain
         'txtOwnerDoB
         '
         Me.txtOwnerDoB.BackColor = System.Drawing.SystemColors.Info
-        Me.txtOwnerDoB.Location = New System.Drawing.Point(260, 174)
+        Me.txtOwnerDoB.Location = New System.Drawing.Point(144, 145)
         Me.txtOwnerDoB.Name = "txtOwnerDoB"
         Me.txtOwnerDoB.Size = New System.Drawing.Size(127, 20)
         Me.txtOwnerDoB.TabIndex = 3
@@ -270,7 +324,7 @@ Partial Class frmMain
         'txtOwnerFullName
         '
         Me.txtOwnerFullName.BackColor = System.Drawing.SystemColors.Info
-        Me.txtOwnerFullName.Location = New System.Drawing.Point(260, 82)
+        Me.txtOwnerFullName.Location = New System.Drawing.Point(144, 53)
         Me.txtOwnerFullName.Name = "txtOwnerFullName"
         Me.txtOwnerFullName.Size = New System.Drawing.Size(127, 20)
         Me.txtOwnerFullName.TabIndex = 0
@@ -279,7 +333,7 @@ Partial Class frmMain
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(154, 127)
+        Me.Label3.Location = New System.Drawing.Point(38, 98)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(50, 20)
         Me.Label3.TabIndex = 3
@@ -289,7 +343,7 @@ Partial Class frmMain
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(154, 171)
+        Me.Label2.Location = New System.Drawing.Point(38, 142)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(100, 20)
         Me.Label2.TabIndex = 2
@@ -299,7 +353,7 @@ Partial Class frmMain
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(154, 82)
+        Me.Label1.Location = New System.Drawing.Point(38, 53)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(83, 20)
         Me.Label1.TabIndex = 1
@@ -309,7 +363,7 @@ Partial Class frmMain
         '
         Me.ownLabel.AutoSize = True
         Me.ownLabel.Font = New System.Drawing.Font("Segoe UI Semibold", 13.25!, System.Drawing.FontStyle.Bold)
-        Me.ownLabel.Location = New System.Drawing.Point(138, 45)
+        Me.ownLabel.Location = New System.Drawing.Point(22, 16)
         Me.ownLabel.Name = "ownLabel"
         Me.ownLabel.Size = New System.Drawing.Size(172, 25)
         Me.ownLabel.TabIndex = 0
@@ -318,6 +372,8 @@ Partial Class frmMain
         'TabPage2
         '
         Me.TabPage2.AutoScroll = True
+        Me.TabPage2.Controls.Add(Me.Label14)
+        Me.TabPage2.Controls.Add(Me.apptTime)
         Me.TabPage2.Controls.Add(Me.apptDate)
         Me.TabPage2.Controls.Add(Me.Label10)
         Me.TabPage2.Controls.Add(Me.txtApptOwnerEmail)
@@ -348,18 +404,41 @@ Partial Class frmMain
         Me.TabPage2.Text = "Appointment"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(377, 361)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(46, 20)
+        Me.Label14.TabIndex = 38
+        Me.Label14.Text = "Time:"
+        '
+        'apptTime
+        '
+        Me.apptTime.CustomFormat = "hh:mm:tt"
+        Me.apptTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.apptTime.Location = New System.Drawing.Point(428, 361)
+        Me.apptTime.Name = "apptTime"
+        Me.apptTime.ShowUpDown = True
+        Me.apptTime.Size = New System.Drawing.Size(101, 20)
+        Me.apptTime.TabIndex = 37
+        '
         'apptDate
         '
-        Me.apptDate.Location = New System.Drawing.Point(308, 335)
+        Me.apptDate.CustomFormat = "ddd,MMM dd, yyyy"
+        Me.apptDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.apptDate.Location = New System.Drawing.Point(381, 333)
         Me.apptDate.Name = "apptDate"
-        Me.apptDate.Size = New System.Drawing.Size(221, 20)
+        Me.apptDate.Size = New System.Drawing.Size(148, 20)
         Me.apptDate.TabIndex = 36
+        Me.apptDate.Value = New Date(2022, 4, 13, 0, 0, 0, 0)
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(304, 312)
+        Me.Label10.Location = New System.Drawing.Point(326, 334)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(45, 20)
         Me.Label10.TabIndex = 35
@@ -563,6 +642,47 @@ Partial Class frmMain
         Me.DataGridView1.Size = New System.Drawing.Size(535, 127)
         Me.DataGridView1.TabIndex = 28
         '
+        'OwnersidDataGridViewTextBoxColumn
+        '
+        Me.OwnersidDataGridViewTextBoxColumn.DataPropertyName = "owners_id"
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle21.ForeColor = System.Drawing.Color.Red
+        Me.OwnersidDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle21
+        Me.OwnersidDataGridViewTextBoxColumn.HeaderText = "ID"
+        Me.OwnersidDataGridViewTextBoxColumn.Name = "OwnersidDataGridViewTextBoxColumn"
+        Me.OwnersidDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FullnameDataGridViewTextBoxColumn
+        '
+        Me.FullnameDataGridViewTextBoxColumn.DataPropertyName = "full_name"
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.FullnameDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle22
+        Me.FullnameDataGridViewTextBoxColumn.HeaderText = "Owner"
+        Me.FullnameDataGridViewTextBoxColumn.Name = "FullnameDataGridViewTextBoxColumn"
+        Me.FullnameDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'AgeDataGridViewTextBoxColumn
+        '
+        Me.AgeDataGridViewTextBoxColumn.DataPropertyName = "age"
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle23.Format = "d"
+        DataGridViewCellStyle23.NullValue = Nothing
+        Me.AgeDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle23
+        Me.AgeDataGridViewTextBoxColumn.HeaderText = "DOB"
+        Me.AgeDataGridViewTextBoxColumn.Name = "AgeDataGridViewTextBoxColumn"
+        Me.AgeDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'EmailDataGridViewTextBoxColumn
+        '
+        Me.EmailDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.EmailDataGridViewTextBoxColumn.DataPropertyName = "email"
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.EmailDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle24
+        Me.EmailDataGridViewTextBoxColumn.HeaderText = "Email"
+        Me.EmailDataGridViewTextBoxColumn.Name = "EmailDataGridViewTextBoxColumn"
+        Me.EmailDataGridViewTextBoxColumn.ReadOnly = True
+        Me.EmailDataGridViewTextBoxColumn.Width = 200
+        '
         'btnInsert
         '
         Me.btnInsert.BackColor = System.Drawing.Color.LightGreen
@@ -654,7 +774,7 @@ Partial Class frmMain
         'comboReasonForVisit
         '
         Me.comboReasonForVisit.FormattingEnabled = True
-        Me.comboReasonForVisit.Items.AddRange(New Object() {"Sick Visit", "Wellness Exam", "Vaccinations", "Recheck", "Laser Therapy: Call for appointment", "Nail Trim", "Anal Glands", "Injection", "Other: Reason in notes"})
+        Me.comboReasonForVisit.Items.AddRange(New Object() {"Sick Visit", "Wellness Exam", "Vaccinations", "Recheck", "Laser Therapy", "Nail Trim", "Anal Glands", "Injection", "Other: Reason in notes"})
         Me.comboReasonForVisit.Location = New System.Drawing.Point(136, 292)
         Me.comboReasonForVisit.Name = "comboReasonForVisit"
         Me.comboReasonForVisit.Size = New System.Drawing.Size(161, 21)
@@ -718,47 +838,6 @@ Partial Class frmMain
         Me.btnLogOut.Text = "Log Out"
         Me.btnLogOut.UseVisualStyleBackColor = False
         '
-        'OwnersidDataGridViewTextBoxColumn
-        '
-        Me.OwnersidDataGridViewTextBoxColumn.DataPropertyName = "owners_id"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red
-        Me.OwnersidDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.OwnersidDataGridViewTextBoxColumn.HeaderText = "ID"
-        Me.OwnersidDataGridViewTextBoxColumn.Name = "OwnersidDataGridViewTextBoxColumn"
-        Me.OwnersidDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'FullnameDataGridViewTextBoxColumn
-        '
-        Me.FullnameDataGridViewTextBoxColumn.DataPropertyName = "full_name"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.FullnameDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.FullnameDataGridViewTextBoxColumn.HeaderText = "Owner"
-        Me.FullnameDataGridViewTextBoxColumn.Name = "FullnameDataGridViewTextBoxColumn"
-        Me.FullnameDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'AgeDataGridViewTextBoxColumn
-        '
-        Me.AgeDataGridViewTextBoxColumn.DataPropertyName = "age"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.Format = "d"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.AgeDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
-        Me.AgeDataGridViewTextBoxColumn.HeaderText = "DOB"
-        Me.AgeDataGridViewTextBoxColumn.Name = "AgeDataGridViewTextBoxColumn"
-        Me.AgeDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'EmailDataGridViewTextBoxColumn
-        '
-        Me.EmailDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.EmailDataGridViewTextBoxColumn.DataPropertyName = "email"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.EmailDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
-        Me.EmailDataGridViewTextBoxColumn.HeaderText = "Email"
-        Me.EmailDataGridViewTextBoxColumn.Name = "EmailDataGridViewTextBoxColumn"
-        Me.EmailDataGridViewTextBoxColumn.ReadOnly = True
-        Me.EmailDataGridViewTextBoxColumn.Width = 200
-        '
         'loginUser
         '
         Me.loginUser.AutoSize = True
@@ -771,6 +850,61 @@ Partial Class frmMain
         Me.loginUser.TabIndex = 29
         Me.loginUser.Text = "user"
         '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.BackColor = System.Drawing.Color.Transparent
+        Me.Label19.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.ForeColor = System.Drawing.Color.White
+        Me.Label19.Location = New System.Drawing.Point(12, 610)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(108, 21)
+        Me.Label19.TabIndex = 30
+        Me.Label19.Text = "Current Time:"
+        '
+        'lblTime
+        '
+        Me.lblTime.AutoSize = True
+        Me.lblTime.BackColor = System.Drawing.Color.Transparent
+        Me.lblTime.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTime.ForeColor = System.Drawing.Color.White
+        Me.lblTime.Location = New System.Drawing.Point(126, 610)
+        Me.lblTime.Name = "lblTime"
+        Me.lblTime.Size = New System.Drawing.Size(65, 21)
+        Me.lblTime.TabIndex = 31
+        Me.lblTime.Text = "timeLbl"
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 30
+        '
+        'apptList
+        '
+        Me.apptList.Location = New System.Drawing.Point(4, 22)
+        Me.apptList.Name = "apptList"
+        Me.apptList.Padding = New System.Windows.Forms.Padding(3)
+        Me.apptList.Size = New System.Drawing.Size(546, 600)
+        Me.apptList.TabIndex = 2
+        Me.apptList.Text = "Upcoming Appointments"
+        Me.apptList.UseVisualStyleBackColor = True
+        '
+        'btnAdminCtrl
+        '
+        Me.btnAdminCtrl.BackColor = System.Drawing.Color.Salmon
+        Me.btnAdminCtrl.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.btnAdminCtrl.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine
+        Me.btnAdminCtrl.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
+        Me.btnAdminCtrl.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAdminCtrl.Font = New System.Drawing.Font("Malgun Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAdminCtrl.Location = New System.Drawing.Point(130, 40)
+        Me.btnAdminCtrl.Name = "btnAdminCtrl"
+        Me.btnAdminCtrl.Size = New System.Drawing.Size(140, 33)
+        Me.btnAdminCtrl.TabIndex = 32
+        Me.btnAdminCtrl.Text = "Admin Controls"
+        Me.btnAdminCtrl.UseVisualStyleBackColor = False
+        Me.btnAdminCtrl.Visible = False
+        '
         'frmMain
         '
         Me.AcceptButton = Me.btnInsertOwner
@@ -779,16 +913,19 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(1076, 640)
+        Me.Controls.Add(Me.btnAdminCtrl)
+        Me.Controls.Add(Me.lblTime)
+        Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.loginUser)
         Me.Controls.Add(Me.btnLogOut)
-        Me.Controls.Add(Me.patientsTab)
+        Me.Controls.Add(Me.rhTabSuite)
         Me.Controls.Add(Me.logLbl)
         Me.ForeColor = System.Drawing.Color.Black
         Me.MaximizeBox = False
         Me.Name = "frmMain"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = " Rolling Hills"
-        Me.patientsTab.ResumeLayout(False)
+        Me.rhTabSuite.ResumeLayout(False)
         Me.ownerPage.ResumeLayout(False)
         Me.ownerPage.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
@@ -810,7 +947,7 @@ Partial Class frmMain
     End Sub
 
     Friend WithEvents logLbl As Label
-    Friend WithEvents patientsTab As TabControl
+    Friend WithEvents rhTabSuite As TabControl
     Friend WithEvents ownerPage As TabPage
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents txtOwnerEmail As TextBox
@@ -876,4 +1013,15 @@ Partial Class frmMain
     Friend WithEvents AgeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents EmailDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents loginUser As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents btnClear As Button
+    Friend WithEvents lstDataCommit As ListBox
+    Friend WithEvents btnLoadList As Button
+    Friend WithEvents apptTime As DateTimePicker
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label19 As Label
+    Friend WithEvents lblTime As Label
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents apptList As TabPage
+    Friend WithEvents btnAdminCtrl As Button
 End Class

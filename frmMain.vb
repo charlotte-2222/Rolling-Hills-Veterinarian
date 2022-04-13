@@ -1,10 +1,21 @@
-﻿Imports System.Data.SqlClient
+﻿'Charlotte Childers
+'Matthew Alimagham
+'CPT-206 | Visual Basic, Final Project
+'Rolling Hills Veterinary Clinic Application
+'04/27/22
+'This project is a Vet-Technician portal for creating patient accounts,
+'Creating appointments, and 
+Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading.Tasks
 
 Public Class frmMain
 
+
+
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
         'TODO: This line of code loads data into the '_Vet_Clinic_RHDataSet.vets' table. You can move, or remove it, as needed.
         Me.VetsTableAdapter.Fill(Me._Vet_Clinic_RHDataSet.vets)
         'TODO: This line of code loads data into the '_Vet_Clinic_RHDataSet.owners' table. You can move, or remove it, as needed.
@@ -12,7 +23,15 @@ Public Class frmMain
         'TODO: This line of code loads data into the '_Vet_Clinic_RHDataSet.owners' table. You can move, or remove it, as needed.
         Me.OwnersTableAdapter.Fill(Me._Vet_Clinic_RHDataSet.owners)
 
+        '' pre-establishes lst item details for patient file
 
+        lstDataCommit.Items.Add("Owner Name: " & txtOwnerFullName.Text & "")
+        lstDataCommit.Items.Add("Email: " & txtOwnerEmail.Text & "")
+        lstDataCommit.Items.Add("DoB: " & txtOwnerDoB.Text & "")
+        lstDataCommit.Items.Add("Pet Name: " & txtPetName.Text & "")
+        lstDataCommit.Items.Add("Pet Age: " & txtPetAge.Text & "")
+        lstDataCommit.Items.Add("Species: " & txtPetBreed.Text & "")
+        lstDataCommit.Items.Add("Escape Attempts: " & txtEscapeAttempts.Text & "")
 
 
 
@@ -22,7 +41,7 @@ Public Class frmMain
 
 
     Private Sub btnInsertOwner_Click(sender As Object, e As EventArgs) Handles btnInsertOwner.Click
-
+        '' patient creation / inserts into owner and animal tables.
         Dim db As String = Path.Combine(Directory.GetCurrentDirectory(), "Vet-Clinic-RH.mdf")
         Dim conn As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & (db) & ";Integrated Security=True")
 
@@ -32,6 +51,7 @@ Public Class frmMain
             cmd.Parameters.Add("@fullname", SqlDbType.VarChar).Value = txtOwnerFullName.Text
             cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = txtOwnerEmail.Text
             cmd.Parameters.Add("@age", SqlDbType.Date).Value = txtOwnerDoB.Text
+
 
 
             conn.Open()
@@ -60,11 +80,26 @@ Public Class frmMain
 
         MessageBox.Show("New patient file created!")
 
+        '' Clear text boxes and list on patient add
+        txtOwnerFullName.Clear()
+        txtOwnerEmail.Clear()
+        txtOwnerDoB.Clear()
+        txtPetName.Clear()
+        txtPetAge.Clear()
+        txtPetBreed.Clear()
+        txtEscapeAttempts.Clear()
+
+        'Will reset to original posistion
+        lstDataCommit.Items.Clear()
+        btnLoadList.PerformClick()
+
     End Sub
 
 
 
     Private Sub DataGridView1_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseClick
+        ''Will auto fill appropriate text boxes when creating an appointment
+
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
             txtPetOwner.Text = row.Cells(1).Value.ToString
@@ -74,6 +109,7 @@ Public Class frmMain
 
 
     Private Sub TxtboxEmailToolStripButton_Click(sender As Object, e As EventArgs) Handles TxtboxEmailToolStripButton.Click
+        '' search by email
         Try
             Me.OwnersTableAdapter.txtboxEmail(Me._Vet_Clinic_RHDataSet.owners, EmailToolStripTextBox.Text)
         Catch ex As System.Exception
@@ -83,12 +119,15 @@ Public Class frmMain
     End Sub
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
-
+        ''simple refresh
         Me.OwnersTableAdapter.Fill(Me._Vet_Clinic_RHDataSet.owners)
 
     End Sub
 
     Private Sub comboContacts_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboContacts.SelectedIndexChanged
+        ''If the patient prefers email, pull from patient DB.
+        ''If the patient prefers mobile/landline contact, insert updated phonenum.
+        '' Text/label hidden by default.
         If comboContacts.SelectedIndex = 1 Then
             lblInvisPhone.Visible = True
             txtInvisPhone.Visible = True
@@ -99,6 +138,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnInsert_Click(sender As Object, e As EventArgs) Handles btnInsert.Click
+        '' Will create and insert appointment details into table, some fields are auto filled
         Dim db As String = Path.Combine(Directory.GetCurrentDirectory(), "Vet-Clinic-RH.mdf")
         Dim conn As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & (db) & ";Integrated Security=True")
 
@@ -114,7 +154,7 @@ Public Class frmMain
             cmd.Parameters.Add("@contact", SqlDbType.VarChar).Value = comboContacts.SelectedItem.ToString()
             cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = txtApptOwnerEmail.Text
             cmd.Parameters.Add("@phone", SqlDbType.VarChar).Value = txtInvisPhone.Text
-            cmd.Parameters.Add("@date", SqlDbType.VarChar).Value = apptDate.Value.ToString()
+            cmd.Parameters.Add("@date", SqlDbType.VarChar).Value = apptDate.Value.Date & " - " & apptTime.Value.TimeOfDay.ToString()
             cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = txtAddDetails.Text
 
 
@@ -124,9 +164,15 @@ Public Class frmMain
 
 
 
+
+
+
         End Using
 
         MessageBox.Show("Appointment made!")
+
+
+
     End Sub
 
     Private Sub btnLogOut_Click(sender As Object, e As EventArgs) Handles btnLogOut.Click
@@ -134,5 +180,53 @@ Public Class frmMain
         login.Show()
     End Sub
 
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        ''Clears Patient creation textboxes
 
+
+
+        txtEscapeAttempts.Clear()
+        txtOwnerFullName.Clear()
+        txtOwnerEmail.Clear()
+        txtOwnerDoB.Clear()
+
+        txtPetName.Clear()
+        txtPetAge.Clear()
+        txtPetBreed.Clear()
+
+        'Will reset to original posistion
+        lstDataCommit.Items.Clear()
+        btnLoadList.PerformClick()
+
+
+    End Sub
+
+    Private Sub btnLoadList_Click(sender As Object, e As EventArgs) Handles btnLoadList.Click
+
+        lstDataCommit.Items.Clear()
+        lstDataCommit.Items.Add("Owner Name: " & txtOwnerFullName.Text & "")
+        lstDataCommit.Items.Add("Email: " & txtOwnerEmail.Text & "")
+        lstDataCommit.Items.Add("DoB: " & txtOwnerDoB.Text & "")
+        lstDataCommit.Items.Add("Pet Name: " & txtPetName.Text & "")
+        lstDataCommit.Items.Add("Pet Age: " & txtPetAge.Text & "")
+        lstDataCommit.Items.Add("Species: " & txtPetBreed.Text & "")
+        lstDataCommit.Items.Add("Escape Attempts: " & txtEscapeAttempts.Text & "")
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        lblTime.Text = DateTime.Now.ToString("F")
+    End Sub
+
+    Private Sub btnAdminCtrl_Click(sender As Object, e As EventArgs) Handles btnAdminCtrl.Click
+        Admin.Show()
+    End Sub
+
+    Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If MessageBox.Show("Are you sure you wish to exit?", "Exiting...", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            login.Close()
+            Application.Exit()
+        Else
+            e.Cancel = True
+        End If
+    End Sub
 End Class

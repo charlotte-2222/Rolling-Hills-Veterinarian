@@ -38,6 +38,9 @@ Public Class login
                 txtUsername.Clear()
                 txtPassword.Clear()
 
+
+
+
             End If
 
         End Using
@@ -51,4 +54,5 @@ Public Class login
             Me.Close()
         End If
     End Sub
+
 End Class
