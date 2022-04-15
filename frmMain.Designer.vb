@@ -24,10 +24,10 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.logLbl = New System.Windows.Forms.Label()
         Me.rhTabSuite = New System.Windows.Forms.TabControl()
         Me.ownerPage = New System.Windows.Forms.TabPage()
@@ -96,6 +96,7 @@ Partial Class frmMain
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.apptList = New System.Windows.Forms.TabPage()
         Me.OwnersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OwnersTableAdapter = New Charlotte_Childers_CPT_206_Final_Project._Vet_Clinic_RHDataSetTableAdapters.ownersTableAdapter()
         Me.VetsTableAdapter = New Charlotte_Childers_CPT_206_Final_Project._Vet_Clinic_RHDataSetTableAdapters.vetsTableAdapter()
@@ -104,8 +105,15 @@ Partial Class frmMain
         Me.Label19 = New System.Windows.Forms.Label()
         Me.lblTime = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.apptList = New System.Windows.Forms.TabPage()
         Me.btnAdminCtrl = New System.Windows.Forms.Button()
+        Me.adminBox = New System.Windows.Forms.GroupBox()
+        Me.btnX = New System.Windows.Forms.Button()
+        Me.btnAdminSubmit = New System.Windows.Forms.Button()
+        Me.txtAdmPass = New System.Windows.Forms.TextBox()
+        Me.txtAdmUser = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.rhTabSuite.SuspendLayout()
         Me.ownerPage.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -118,6 +126,7 @@ Partial Class frmMain
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VetsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OwnersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.adminBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'logLbl
@@ -645,9 +654,9 @@ Partial Class frmMain
         'OwnersidDataGridViewTextBoxColumn
         '
         Me.OwnersidDataGridViewTextBoxColumn.DataPropertyName = "owners_id"
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle21.ForeColor = System.Drawing.Color.Red
-        Me.OwnersidDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Red
+        Me.OwnersidDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
         Me.OwnersidDataGridViewTextBoxColumn.HeaderText = "ID"
         Me.OwnersidDataGridViewTextBoxColumn.Name = "OwnersidDataGridViewTextBoxColumn"
         Me.OwnersidDataGridViewTextBoxColumn.ReadOnly = True
@@ -655,8 +664,8 @@ Partial Class frmMain
         'FullnameDataGridViewTextBoxColumn
         '
         Me.FullnameDataGridViewTextBoxColumn.DataPropertyName = "full_name"
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.FullnameDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.FullnameDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
         Me.FullnameDataGridViewTextBoxColumn.HeaderText = "Owner"
         Me.FullnameDataGridViewTextBoxColumn.Name = "FullnameDataGridViewTextBoxColumn"
         Me.FullnameDataGridViewTextBoxColumn.ReadOnly = True
@@ -664,10 +673,10 @@ Partial Class frmMain
         'AgeDataGridViewTextBoxColumn
         '
         Me.AgeDataGridViewTextBoxColumn.DataPropertyName = "age"
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle23.Format = "d"
-        DataGridViewCellStyle23.NullValue = Nothing
-        Me.AgeDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.Format = "d"
+        DataGridViewCellStyle7.NullValue = Nothing
+        Me.AgeDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle7
         Me.AgeDataGridViewTextBoxColumn.HeaderText = "DOB"
         Me.AgeDataGridViewTextBoxColumn.Name = "AgeDataGridViewTextBoxColumn"
         Me.AgeDataGridViewTextBoxColumn.ReadOnly = True
@@ -676,8 +685,8 @@ Partial Class frmMain
         '
         Me.EmailDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.EmailDataGridViewTextBoxColumn.DataPropertyName = "email"
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.EmailDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.EmailDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle8
         Me.EmailDataGridViewTextBoxColumn.HeaderText = "Email"
         Me.EmailDataGridViewTextBoxColumn.Name = "EmailDataGridViewTextBoxColumn"
         Me.EmailDataGridViewTextBoxColumn.ReadOnly = True
@@ -810,6 +819,16 @@ Partial Class frmMain
         Me.Label15.TabIndex = 6
         Me.Label15.Text = "Create Appointment"
         '
+        'apptList
+        '
+        Me.apptList.Location = New System.Drawing.Point(4, 22)
+        Me.apptList.Name = "apptList"
+        Me.apptList.Padding = New System.Windows.Forms.Padding(3)
+        Me.apptList.Size = New System.Drawing.Size(546, 600)
+        Me.apptList.TabIndex = 2
+        Me.apptList.Text = "Upcoming Appointments"
+        Me.apptList.UseVisualStyleBackColor = True
+        '
         'OwnersBindingSource
         '
         Me.OwnersBindingSource.DataMember = "owners"
@@ -879,16 +898,6 @@ Partial Class frmMain
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 30
         '
-        'apptList
-        '
-        Me.apptList.Location = New System.Drawing.Point(4, 22)
-        Me.apptList.Name = "apptList"
-        Me.apptList.Padding = New System.Windows.Forms.Padding(3)
-        Me.apptList.Size = New System.Drawing.Size(546, 600)
-        Me.apptList.TabIndex = 2
-        Me.apptList.Text = "Upcoming Appointments"
-        Me.apptList.UseVisualStyleBackColor = True
-        '
         'btnAdminCtrl
         '
         Me.btnAdminCtrl.BackColor = System.Drawing.Color.Salmon
@@ -903,7 +912,109 @@ Partial Class frmMain
         Me.btnAdminCtrl.TabIndex = 32
         Me.btnAdminCtrl.Text = "Admin Controls"
         Me.btnAdminCtrl.UseVisualStyleBackColor = False
-        Me.btnAdminCtrl.Visible = False
+        '
+        'adminBox
+        '
+        Me.adminBox.Controls.Add(Me.btnX)
+        Me.adminBox.Controls.Add(Me.btnAdminSubmit)
+        Me.adminBox.Controls.Add(Me.txtAdmPass)
+        Me.adminBox.Controls.Add(Me.txtAdmUser)
+        Me.adminBox.Controls.Add(Me.Label21)
+        Me.adminBox.Controls.Add(Me.Label22)
+        Me.adminBox.Controls.Add(Me.Label20)
+        Me.adminBox.Location = New System.Drawing.Point(130, 99)
+        Me.adminBox.Name = "adminBox"
+        Me.adminBox.Size = New System.Drawing.Size(184, 183)
+        Me.adminBox.TabIndex = 33
+        Me.adminBox.TabStop = False
+        Me.adminBox.Text = "Admin Only"
+        Me.adminBox.Visible = False
+        '
+        'btnX
+        '
+        Me.btnX.BackColor = System.Drawing.Color.Salmon
+        Me.btnX.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.btnX.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine
+        Me.btnX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
+        Me.btnX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnX.Font = New System.Drawing.Font("Malgun Gothic", 6.75!, System.Drawing.FontStyle.Bold)
+        Me.btnX.Location = New System.Drawing.Point(165, 0)
+        Me.btnX.Name = "btnX"
+        Me.btnX.Size = New System.Drawing.Size(19, 19)
+        Me.btnX.TabIndex = 30
+        Me.btnX.Text = "X"
+        Me.btnX.UseVisualStyleBackColor = False
+        '
+        'btnAdminSubmit
+        '
+        Me.btnAdminSubmit.BackColor = System.Drawing.Color.Salmon
+        Me.btnAdminSubmit.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.btnAdminSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine
+        Me.btnAdminSubmit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
+        Me.btnAdminSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAdminSubmit.Font = New System.Drawing.Font("Malgun Gothic", 8.75!, System.Drawing.FontStyle.Bold)
+        Me.btnAdminSubmit.Location = New System.Drawing.Point(54, 147)
+        Me.btnAdminSubmit.Name = "btnAdminSubmit"
+        Me.btnAdminSubmit.Size = New System.Drawing.Size(80, 30)
+        Me.btnAdminSubmit.TabIndex = 29
+        Me.btnAdminSubmit.Text = "Submit"
+        Me.btnAdminSubmit.UseVisualStyleBackColor = False
+        '
+        'txtAdmPass
+        '
+        Me.txtAdmPass.BackColor = System.Drawing.SystemColors.Info
+        Me.txtAdmPass.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAdmPass.Location = New System.Drawing.Point(6, 116)
+        Me.txtAdmPass.Name = "txtAdmPass"
+        Me.txtAdmPass.Size = New System.Drawing.Size(147, 25)
+        Me.txtAdmPass.TabIndex = 7
+        Me.txtAdmPass.UseSystemPasswordChar = True
+        '
+        'txtAdmUser
+        '
+        Me.txtAdmUser.BackColor = System.Drawing.SystemColors.Info
+        Me.txtAdmUser.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAdmUser.Location = New System.Drawing.Point(6, 62)
+        Me.txtAdmUser.Name = "txtAdmUser"
+        Me.txtAdmUser.Size = New System.Drawing.Size(147, 25)
+        Me.txtAdmUser.TabIndex = 6
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.BackColor = System.Drawing.Color.Transparent
+        Me.Label21.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Label21.Font = New System.Drawing.Font("Segoe UI Semibold", 12.25!, System.Drawing.FontStyle.Bold)
+        Me.Label21.ForeColor = System.Drawing.Color.Black
+        Me.Label21.Location = New System.Drawing.Point(6, 90)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(82, 23)
+        Me.Label21.TabIndex = 5
+        Me.Label21.Text = "Password"
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.BackColor = System.Drawing.Color.Transparent
+        Me.Label22.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Label22.Font = New System.Drawing.Font("Segoe UI Semibold", 12.25!, System.Drawing.FontStyle.Bold)
+        Me.Label22.ForeColor = System.Drawing.Color.Black
+        Me.Label22.Location = New System.Drawing.Point(6, 36)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(87, 23)
+        Me.Label22.TabIndex = 4
+        Me.Label22.Text = "Username"
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Segoe UI Semibold", 11.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle))
+        Me.Label20.ForeColor = System.Drawing.Color.Red
+        Me.Label20.Location = New System.Drawing.Point(28, 16)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(125, 20)
+        Me.Label20.TabIndex = 1
+        Me.Label20.Text = "Enter Credentials"
         '
         'frmMain
         '
@@ -913,6 +1024,7 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(1076, 640)
+        Me.Controls.Add(Me.adminBox)
         Me.Controls.Add(Me.btnAdminCtrl)
         Me.Controls.Add(Me.lblTime)
         Me.Controls.Add(Me.Label19)
@@ -941,6 +1053,8 @@ Partial Class frmMain
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VetsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OwnersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.adminBox.ResumeLayout(False)
+        Me.adminBox.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1024,4 +1138,12 @@ Partial Class frmMain
     Friend WithEvents Timer1 As Timer
     Friend WithEvents apptList As TabPage
     Friend WithEvents btnAdminCtrl As Button
+    Friend WithEvents adminBox As GroupBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents btnAdminSubmit As Button
+    Friend WithEvents txtAdmPass As TextBox
+    Friend WithEvents txtAdmUser As TextBox
+    Friend WithEvents Label21 As Label
+    Friend WithEvents Label22 As Label
+    Friend WithEvents btnX As Button
 End Class

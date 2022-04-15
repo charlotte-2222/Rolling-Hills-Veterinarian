@@ -218,7 +218,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnAdminCtrl_Click(sender As Object, e As EventArgs) Handles btnAdminCtrl.Click
-        Admin.Show()
+        adminBox.Visible = True
     End Sub
 
     Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -228,5 +228,36 @@ Public Class frmMain
         Else
             e.Cancel = True
         End If
+    End Sub
+
+    Private Sub btnAdminSubmit_Click(sender As Object, e As EventArgs) Handles btnAdminSubmit.Click
+        Dim user, pass As String
+        user = "Admin"
+        pass = "Admin"
+
+        If txtAdmUser.Text = user And txtAdmPass.Text = pass Then
+            Admin.Show()
+            txtAdmUser.Clear()
+            txtAdmPass.Clear()
+        Else
+            MessageBox.Show("Incorrect Username or Password - You must have Administrative Privileges to access this form.", "Insufficient Access Level", MessageBoxButtons.OKCancel
+                            )
+            If DialogResult.Cancel Then
+                adminBox.Visible = False
+                txtAdmUser.Clear()
+                txtAdmPass.Clear()
+            ElseIf DialogResult.OK Then
+                adminBox.Visible = True
+                txtAdmUser.Clear()
+                txtAdmPass.Clear()
+            End If
+        End If
+
+
+
+    End Sub
+
+    Private Sub btnX_Click(sender As Object, e As EventArgs) Handles btnX.Click
+        adminBox.Visible = False
     End Sub
 End Class
