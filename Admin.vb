@@ -1,4 +1,9 @@
-﻿Imports System.Data.SqlClient
+﻿
+Option Explicit On
+Option Strict On
+Option Infer Off
+
+Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading.Tasks
 

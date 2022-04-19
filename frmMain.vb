@@ -5,6 +5,11 @@
 '04/27/22
 'This project is a Vet-Technician portal for creating patient accounts,
 'Creating appointments, and 
+
+Option Explicit On
+Option Strict On
+Option Infer Off
+
 Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading.Tasks
