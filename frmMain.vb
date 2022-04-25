@@ -14,12 +14,14 @@ Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Threading.Tasks
 
+
 Public Class frmMain
 
+    Public Overloads Property DialogResult As DialogResult
 
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        'TODO: This line of code loads data into the '_Vet_Clinic_RHDataSet.visits' table. You can move, or remove it, as needed.
 
         'TODO: This line of code loads data into the '_Vet_Clinic_RHDataSet.vets' table. You can move, or remove it, as needed.
         Me.VetsTableAdapter.Fill(Me._Vet_Clinic_RHDataSet.vets)
@@ -240,18 +242,21 @@ Public Class frmMain
         user = "Admin"
         pass = "Admin"
 
+
+
         If txtAdmUser.Text = user And txtAdmPass.Text = pass Then
             Admin.Show()
             txtAdmUser.Clear()
             txtAdmPass.Clear()
         Else
-            MessageBox.Show("Incorrect Username or Password - You must have Administrative Privileges to access this form.", "Insufficient Access Level", MessageBoxButtons.OKCancel
+            Dim Result As DialogResult = MessageBox.Show("Incorrect Username or Password - You must have Administrative Privileges to access this form.", "Insufficient Access Level", MessageBoxButtons.OKCancel
                             )
-            If DialogResult.Cancel Then
+
+            If Result = Windows.Forms.DialogResult.Cancel Then
                 adminBox.Visible = False
                 txtAdmUser.Clear()
                 txtAdmPass.Clear()
-            ElseIf DialogResult.OK Then
+            ElseIf Result = Windows.Forms.DialogResult.OK Then
                 adminBox.Visible = True
                 txtAdmUser.Clear()
                 txtAdmPass.Clear()

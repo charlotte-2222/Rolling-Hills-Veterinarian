@@ -13,6 +13,7 @@ Public Class Admin
     End Sub
 
     Private Sub Admin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        AssignValidation(Me.txtID, ValidationType.Only_Numbers)
         'TODO: This line of code loads data into the '_Vet_Clinic_RHDataSet.vets' table. You can move, or remove it, as needed.
         Me.VetsTableAdapter.Fill(Me._Vet_Clinic_RHDataSet.vets)
 
@@ -80,11 +81,15 @@ Public Class Admin
     Private Sub btnDel_Click(sender As Object, e As EventArgs) Handles btnDel.Click
 
         Dim db As String = Path.Combine(Directory.GetCurrentDirectory(), "Vet-Clinic-RH.mdf")
-            Dim conn As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & (db) & ";Integrated Security=True")
+        Dim result As DialogResult
+        Dim amount As Integer = CInt(txtID.Text)
 
-            Using cmd As New SqlCommand("DELETE FROM vets where vets_id=@id", conn)
 
-            cmd.Parameters.Add("@id", SqlDbType.VarChar).Value = txtID.Text
+        Dim conn As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & (db) & ";Integrated Security=True")
+
+        Using cmd As New SqlCommand("DELETE FROM vets WHERE vets_id=@id", conn)
+
+            cmd.Parameters.Add("@id", SqlDbType.Int).Value = amount
 
             conn.Open()
 
@@ -92,7 +97,7 @@ Public Class Admin
                 MsgBox("Operation Cancelled")
                 Exit Sub
 
-            ElseIf DialogResult.Yes Then
+            ElseIf result = DialogResult.Yes Then
                 cmd.ExecuteNonQuery()
             End If
             conn.Close()

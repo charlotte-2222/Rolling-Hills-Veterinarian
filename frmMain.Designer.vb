@@ -24,10 +24,10 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.logLbl = New System.Windows.Forms.Label()
         Me.rhTabSuite = New System.Windows.Forms.TabControl()
         Me.ownerPage = New System.Windows.Forms.TabPage()
@@ -97,6 +97,7 @@ Partial Class frmMain
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.apptList = New System.Windows.Forms.TabPage()
+        Me.Label23 = New System.Windows.Forms.Label()
         Me.OwnersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OwnersTableAdapter = New Charlotte_Childers_CPT_206_Final_Project._Vet_Clinic_RHDataSetTableAdapters.ownersTableAdapter()
         Me.VetsTableAdapter = New Charlotte_Childers_CPT_206_Final_Project._Vet_Clinic_RHDataSetTableAdapters.vetsTableAdapter()
@@ -125,6 +126,7 @@ Partial Class frmMain
         CType(Me._Vet_Clinic_RHDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VetsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.apptList.SuspendLayout()
         CType(Me.OwnersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.adminBox.SuspendLayout()
         Me.SuspendLayout()
@@ -654,9 +656,9 @@ Partial Class frmMain
         'OwnersidDataGridViewTextBoxColumn
         '
         Me.OwnersidDataGridViewTextBoxColumn.DataPropertyName = "owners_id"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Red
-        Me.OwnersidDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red
+        Me.OwnersidDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.OwnersidDataGridViewTextBoxColumn.HeaderText = "ID"
         Me.OwnersidDataGridViewTextBoxColumn.Name = "OwnersidDataGridViewTextBoxColumn"
         Me.OwnersidDataGridViewTextBoxColumn.ReadOnly = True
@@ -664,8 +666,8 @@ Partial Class frmMain
         'FullnameDataGridViewTextBoxColumn
         '
         Me.FullnameDataGridViewTextBoxColumn.DataPropertyName = "full_name"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.FullnameDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.FullnameDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.FullnameDataGridViewTextBoxColumn.HeaderText = "Owner"
         Me.FullnameDataGridViewTextBoxColumn.Name = "FullnameDataGridViewTextBoxColumn"
         Me.FullnameDataGridViewTextBoxColumn.ReadOnly = True
@@ -673,10 +675,10 @@ Partial Class frmMain
         'AgeDataGridViewTextBoxColumn
         '
         Me.AgeDataGridViewTextBoxColumn.DataPropertyName = "age"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.Format = "d"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.AgeDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.Format = "d"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.AgeDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
         Me.AgeDataGridViewTextBoxColumn.HeaderText = "DOB"
         Me.AgeDataGridViewTextBoxColumn.Name = "AgeDataGridViewTextBoxColumn"
         Me.AgeDataGridViewTextBoxColumn.ReadOnly = True
@@ -685,8 +687,8 @@ Partial Class frmMain
         '
         Me.EmailDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.EmailDataGridViewTextBoxColumn.DataPropertyName = "email"
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.EmailDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.EmailDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
         Me.EmailDataGridViewTextBoxColumn.HeaderText = "Email"
         Me.EmailDataGridViewTextBoxColumn.Name = "EmailDataGridViewTextBoxColumn"
         Me.EmailDataGridViewTextBoxColumn.ReadOnly = True
@@ -821,6 +823,7 @@ Partial Class frmMain
         '
         'apptList
         '
+        Me.apptList.Controls.Add(Me.Label23)
         Me.apptList.Location = New System.Drawing.Point(4, 22)
         Me.apptList.Name = "apptList"
         Me.apptList.Padding = New System.Windows.Forms.Padding(3)
@@ -828,6 +831,16 @@ Partial Class frmMain
         Me.apptList.TabIndex = 2
         Me.apptList.Text = "Upcoming Appointments"
         Me.apptList.UseVisualStyleBackColor = True
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Segoe UI Semibold", 13.25!, System.Drawing.FontStyle.Bold)
+        Me.Label23.Location = New System.Drawing.Point(6, 6)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(178, 25)
+        Me.Label23.TabIndex = 7
+        Me.Label23.Text = "View Appointments"
         '
         'OwnersBindingSource
         '
@@ -1052,6 +1065,8 @@ Partial Class frmMain
         CType(Me._Vet_Clinic_RHDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.VetsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.apptList.ResumeLayout(False)
+        Me.apptList.PerformLayout()
         CType(Me.OwnersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.adminBox.ResumeLayout(False)
         Me.adminBox.PerformLayout()
@@ -1146,4 +1161,5 @@ Partial Class frmMain
     Friend WithEvents Label21 As Label
     Friend WithEvents Label22 As Label
     Friend WithEvents btnX As Button
+    Friend WithEvents Label23 As Label
 End Class
