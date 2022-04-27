@@ -78,37 +78,7 @@ Public Class Admin
         txtID.Clear()
     End Sub
 
-    Private Sub btnDel_Click(sender As Object, e As EventArgs) Handles btnDel.Click
 
-        Dim db As String = Path.Combine(Directory.GetCurrentDirectory(), "Vet-Clinic-RH.mdf")
-        Dim result As DialogResult
-        Dim amount As Integer = CInt(txtID.Text)
-
-
-        Dim conn As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & (db) & ";Integrated Security=True")
-
-        Using cmd As New SqlCommand("DELETE FROM vets WHERE vets_id=@id", conn)
-
-            cmd.Parameters.Add("@id", SqlDbType.Int).Value = amount
-
-            conn.Open()
-
-            If MessageBox.Show("Are you sure you wish to delete this record?", "Caution...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.No Then
-                MsgBox("Operation Cancelled")
-                Exit Sub
-
-            ElseIf result = DialogResult.Yes Then
-                cmd.ExecuteNonQuery()
-            End If
-            conn.Close()
-        End Using
-
-
-        txtStaffFullName.Clear()
-        txtDoB.Clear()
-        txtGradDate.Clear()
-        txtID.Clear()
-    End Sub
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         ''simple refresh

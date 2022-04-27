@@ -42,7 +42,6 @@ Partial Class Admin
         Me.Label1 = New System.Windows.Forms.Label()
         Me.vetLbl = New System.Windows.Forms.Label()
         Me.btnEdit = New System.Windows.Forms.Button()
-        Me.btnDel = New System.Windows.Forms.Button()
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.ID = New System.Windows.Forms.Label()
         Me.btnRefresh = New System.Windows.Forms.Button()
@@ -59,7 +58,7 @@ Partial Class Admin
         Me.btnCloseAdmin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
         Me.btnCloseAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnCloseAdmin.Font = New System.Drawing.Font("Malgun Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCloseAdmin.Location = New System.Drawing.Point(8, 548)
+        Me.btnCloseAdmin.Location = New System.Drawing.Point(687, 271)
         Me.btnCloseAdmin.Name = "btnCloseAdmin"
         Me.btnCloseAdmin.Size = New System.Drawing.Size(81, 35)
         Me.btnCloseAdmin.TabIndex = 29
@@ -128,7 +127,7 @@ Partial Class Admin
         Me.btnAddRecord.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
         Me.btnAddRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAddRecord.Font = New System.Drawing.Font("Malgun Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAddRecord.Location = New System.Drawing.Point(327, 272)
+        Me.btnAddRecord.Location = New System.Drawing.Point(336, 272)
         Me.btnAddRecord.Name = "btnAddRecord"
         Me.btnAddRecord.Size = New System.Drawing.Size(96, 34)
         Me.btnAddRecord.TabIndex = 31
@@ -215,27 +214,12 @@ Partial Class Admin
         Me.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
         Me.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEdit.Font = New System.Drawing.Font("Malgun Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEdit.Location = New System.Drawing.Point(442, 272)
+        Me.btnEdit.Location = New System.Drawing.Point(453, 272)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(96, 34)
         Me.btnEdit.TabIndex = 39
         Me.btnEdit.Text = "Edit Staff"
         Me.btnEdit.UseVisualStyleBackColor = False
-        '
-        'btnDel
-        '
-        Me.btnDel.BackColor = System.Drawing.Color.LightGreen
-        Me.btnDel.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
-        Me.btnDel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine
-        Me.btnDel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
-        Me.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDel.Font = New System.Drawing.Font("Malgun Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDel.Location = New System.Drawing.Point(557, 272)
-        Me.btnDel.Name = "btnDel"
-        Me.btnDel.Size = New System.Drawing.Size(96, 34)
-        Me.btnDel.TabIndex = 40
-        Me.btnDel.Text = "Delete Staff"
-        Me.btnDel.UseVisualStyleBackColor = False
         '
         'txtID
         '
@@ -267,7 +251,7 @@ Partial Class Admin
         Me.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRefresh.Font = New System.Drawing.Font("Malgun Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRefresh.ForeColor = System.Drawing.Color.White
-        Me.btnRefresh.Location = New System.Drawing.Point(672, 272)
+        Me.btnRefresh.Location = New System.Drawing.Point(570, 272)
         Me.btnRefresh.Name = "btnRefresh"
         Me.btnRefresh.Size = New System.Drawing.Size(96, 34)
         Me.btnRefresh.TabIndex = 43
@@ -280,7 +264,6 @@ Partial Class Admin
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(771, 595)
-        Me.Controls.Add(Me.btnDel)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.ID)
         Me.Controls.Add(Me.btnRefresh)
@@ -325,7 +308,6 @@ Partial Class Admin
     Friend WithEvents AgeDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DateofgraduationDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents btnEdit As Button
-    Friend WithEvents btnDel As Button
     Friend WithEvents txtID As TextBox
     Friend WithEvents ID As Label
     Friend WithEvents btnRefresh As Button

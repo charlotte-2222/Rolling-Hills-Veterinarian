@@ -24,10 +24,11 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.logLbl = New System.Windows.Forms.Label()
         Me.rhTabSuite = New System.Windows.Forms.TabControl()
         Me.ownerPage = New System.Windows.Forms.TabPage()
@@ -97,6 +98,29 @@ Partial Class frmMain
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.apptList = New System.Windows.Forms.TabPage()
+        Me.Email = New System.Windows.Forms.Label()
+        Me.txtSelectApptEmail = New System.Windows.Forms.TextBox()
+        Me.emailOpen = New System.Windows.Forms.Button()
+        Me.btnPrintText = New System.Windows.Forms.Button()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.txtSelectApptReason = New System.Windows.Forms.TextBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.txtSelectApptStaff = New System.Windows.Forms.TextBox()
+        Me.txtSelectApptDate = New System.Windows.Forms.TextBox()
+        Me.txtSelectApptOwner = New System.Windows.Forms.TextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.dgAppts = New System.Windows.Forms.DataGridView()
+        Me.OwnerDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReasonDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.StaffDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmailDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PhoneDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ApptdateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrefcontactDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NotesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AppointmentsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label23 = New System.Windows.Forms.Label()
         Me.OwnersBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OwnersTableAdapter = New Charlotte_Childers_CPT_206_Final_Project._Vet_Clinic_RHDataSetTableAdapters.ownersTableAdapter()
@@ -115,6 +139,7 @@ Partial Class frmMain
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
+        Me.AppointmentsTableAdapter = New Charlotte_Childers_CPT_206_Final_Project._Vet_Clinic_RHDataSetTableAdapters.appointmentsTableAdapter()
         Me.rhTabSuite.SuspendLayout()
         Me.ownerPage.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -127,6 +152,8 @@ Partial Class frmMain
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VetsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.apptList.SuspendLayout()
+        CType(Me.dgAppts, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AppointmentsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OwnersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.adminBox.SuspendLayout()
         Me.SuspendLayout()
@@ -412,7 +439,7 @@ Partial Class frmMain
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage2.Size = New System.Drawing.Size(546, 600)
         Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Appointment"
+        Me.TabPage2.Text = "New Appointment  "
         Me.TabPage2.UseVisualStyleBackColor = True
         '
         'Label14
@@ -656,9 +683,9 @@ Partial Class frmMain
         'OwnersidDataGridViewTextBoxColumn
         '
         Me.OwnersidDataGridViewTextBoxColumn.DataPropertyName = "owners_id"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Red
-        Me.OwnersidDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.Red
+        Me.OwnersidDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle17
         Me.OwnersidDataGridViewTextBoxColumn.HeaderText = "ID"
         Me.OwnersidDataGridViewTextBoxColumn.Name = "OwnersidDataGridViewTextBoxColumn"
         Me.OwnersidDataGridViewTextBoxColumn.ReadOnly = True
@@ -666,8 +693,8 @@ Partial Class frmMain
         'FullnameDataGridViewTextBoxColumn
         '
         Me.FullnameDataGridViewTextBoxColumn.DataPropertyName = "full_name"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.FullnameDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.FullnameDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle18
         Me.FullnameDataGridViewTextBoxColumn.HeaderText = "Owner"
         Me.FullnameDataGridViewTextBoxColumn.Name = "FullnameDataGridViewTextBoxColumn"
         Me.FullnameDataGridViewTextBoxColumn.ReadOnly = True
@@ -675,10 +702,10 @@ Partial Class frmMain
         'AgeDataGridViewTextBoxColumn
         '
         Me.AgeDataGridViewTextBoxColumn.DataPropertyName = "age"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.Format = "d"
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.AgeDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle19.Format = "d"
+        DataGridViewCellStyle19.NullValue = Nothing
+        Me.AgeDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle19
         Me.AgeDataGridViewTextBoxColumn.HeaderText = "DOB"
         Me.AgeDataGridViewTextBoxColumn.Name = "AgeDataGridViewTextBoxColumn"
         Me.AgeDataGridViewTextBoxColumn.ReadOnly = True
@@ -687,8 +714,8 @@ Partial Class frmMain
         '
         Me.EmailDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.EmailDataGridViewTextBoxColumn.DataPropertyName = "email"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.EmailDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.EmailDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle20
         Me.EmailDataGridViewTextBoxColumn.HeaderText = "Email"
         Me.EmailDataGridViewTextBoxColumn.Name = "EmailDataGridViewTextBoxColumn"
         Me.EmailDataGridViewTextBoxColumn.ReadOnly = True
@@ -823,6 +850,20 @@ Partial Class frmMain
         '
         'apptList
         '
+        Me.apptList.Controls.Add(Me.Email)
+        Me.apptList.Controls.Add(Me.txtSelectApptEmail)
+        Me.apptList.Controls.Add(Me.emailOpen)
+        Me.apptList.Controls.Add(Me.btnPrintText)
+        Me.apptList.Controls.Add(Me.Label28)
+        Me.apptList.Controls.Add(Me.txtSelectApptReason)
+        Me.apptList.Controls.Add(Me.Label27)
+        Me.apptList.Controls.Add(Me.Label26)
+        Me.apptList.Controls.Add(Me.Label24)
+        Me.apptList.Controls.Add(Me.txtSelectApptStaff)
+        Me.apptList.Controls.Add(Me.txtSelectApptDate)
+        Me.apptList.Controls.Add(Me.txtSelectApptOwner)
+        Me.apptList.Controls.Add(Me.Label25)
+        Me.apptList.Controls.Add(Me.dgAppts)
         Me.apptList.Controls.Add(Me.Label23)
         Me.apptList.Location = New System.Drawing.Point(4, 22)
         Me.apptList.Name = "apptList"
@@ -831,6 +872,219 @@ Partial Class frmMain
         Me.apptList.TabIndex = 2
         Me.apptList.Text = "Upcoming Appointments"
         Me.apptList.UseVisualStyleBackColor = True
+        '
+        'Email
+        '
+        Me.Email.AutoSize = True
+        Me.Email.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Email.Location = New System.Drawing.Point(249, 419)
+        Me.Email.Name = "Email"
+        Me.Email.Size = New System.Drawing.Size(50, 20)
+        Me.Email.TabIndex = 48
+        Me.Email.Text = "Email:"
+        '
+        'txtSelectApptEmail
+        '
+        Me.txtSelectApptEmail.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtSelectApptEmail.Location = New System.Drawing.Point(305, 417)
+        Me.txtSelectApptEmail.Name = "txtSelectApptEmail"
+        Me.txtSelectApptEmail.ReadOnly = True
+        Me.txtSelectApptEmail.Size = New System.Drawing.Size(132, 20)
+        Me.txtSelectApptEmail.TabIndex = 47
+        '
+        'emailOpen
+        '
+        Me.emailOpen.BackColor = System.Drawing.Color.LightGreen
+        Me.emailOpen.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.emailOpen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine
+        Me.emailOpen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
+        Me.emailOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.emailOpen.Font = New System.Drawing.Font("Malgun Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.emailOpen.Location = New System.Drawing.Point(424, 559)
+        Me.emailOpen.Name = "emailOpen"
+        Me.emailOpen.Size = New System.Drawing.Size(114, 35)
+        Me.emailOpen.TabIndex = 46
+        Me.emailOpen.Text = "Email Patient"
+        Me.emailOpen.UseVisualStyleBackColor = False
+        '
+        'btnPrintText
+        '
+        Me.btnPrintText.BackColor = System.Drawing.Color.LightGreen
+        Me.btnPrintText.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.btnPrintText.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine
+        Me.btnPrintText.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
+        Me.btnPrintText.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnPrintText.Font = New System.Drawing.Font("Malgun Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPrintText.Location = New System.Drawing.Point(6, 559)
+        Me.btnPrintText.Name = "btnPrintText"
+        Me.btnPrintText.Size = New System.Drawing.Size(93, 35)
+        Me.btnPrintText.TabIndex = 45
+        Me.btnPrintText.Text = "Print File?"
+        Me.btnPrintText.UseVisualStyleBackColor = False
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.Location = New System.Drawing.Point(168, 471)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(37, 20)
+        Me.Label28.TabIndex = 44
+        Me.Label28.Text = "For:"
+        '
+        'txtSelectApptReason
+        '
+        Me.txtSelectApptReason.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtSelectApptReason.Location = New System.Drawing.Point(209, 471)
+        Me.txtSelectApptReason.Name = "txtSelectApptReason"
+        Me.txtSelectApptReason.ReadOnly = True
+        Me.txtSelectApptReason.Size = New System.Drawing.Size(132, 20)
+        Me.txtSelectApptReason.TabIndex = 43
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.Location = New System.Drawing.Point(249, 445)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(45, 20)
+        Me.Label27.TabIndex = 42
+        Me.Label27.Text = "Staff:"
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label26.Location = New System.Drawing.Point(52, 443)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(45, 20)
+        Me.Label26.TabIndex = 41
+        Me.Label26.Text = "Date:"
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.Location = New System.Drawing.Point(52, 417)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(54, 20)
+        Me.Label24.TabIndex = 40
+        Me.Label24.Text = "Name:"
+        '
+        'txtSelectApptStaff
+        '
+        Me.txtSelectApptStaff.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtSelectApptStaff.Location = New System.Drawing.Point(305, 445)
+        Me.txtSelectApptStaff.Name = "txtSelectApptStaff"
+        Me.txtSelectApptStaff.ReadOnly = True
+        Me.txtSelectApptStaff.Size = New System.Drawing.Size(132, 20)
+        Me.txtSelectApptStaff.TabIndex = 39
+        '
+        'txtSelectApptDate
+        '
+        Me.txtSelectApptDate.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtSelectApptDate.Location = New System.Drawing.Point(112, 443)
+        Me.txtSelectApptDate.Name = "txtSelectApptDate"
+        Me.txtSelectApptDate.ReadOnly = True
+        Me.txtSelectApptDate.Size = New System.Drawing.Size(131, 20)
+        Me.txtSelectApptDate.TabIndex = 38
+        '
+        'txtSelectApptOwner
+        '
+        Me.txtSelectApptOwner.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtSelectApptOwner.Location = New System.Drawing.Point(112, 417)
+        Me.txtSelectApptOwner.Name = "txtSelectApptOwner"
+        Me.txtSelectApptOwner.ReadOnly = True
+        Me.txtSelectApptOwner.Size = New System.Drawing.Size(131, 20)
+        Me.txtSelectApptOwner.TabIndex = 36
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Font = New System.Drawing.Font("Segoe UI Semibold", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.Location = New System.Drawing.Point(7, 386)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(164, 20)
+        Me.Label25.TabIndex = 35
+        Me.Label25.Text = "Selected Appointment:"
+        '
+        'dgAppts
+        '
+        Me.dgAppts.AllowUserToAddRows = False
+        Me.dgAppts.AllowUserToDeleteRows = False
+        Me.dgAppts.AutoGenerateColumns = False
+        Me.dgAppts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgAppts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.OwnerDataGridViewTextBoxColumn, Me.ReasonDataGridViewTextBoxColumn, Me.StaffDataGridViewTextBoxColumn, Me.EmailDataGridViewTextBoxColumn1, Me.PhoneDataGridViewTextBoxColumn, Me.ApptdateDataGridViewTextBoxColumn, Me.PrefcontactDataGridViewTextBoxColumn, Me.NotesDataGridViewTextBoxColumn})
+        Me.dgAppts.DataSource = Me.AppointmentsBindingSource
+        Me.dgAppts.Location = New System.Drawing.Point(6, 44)
+        Me.dgAppts.Name = "dgAppts"
+        Me.dgAppts.ReadOnly = True
+        Me.dgAppts.Size = New System.Drawing.Size(534, 330)
+        Me.dgAppts.TabIndex = 8
+        '
+        'OwnerDataGridViewTextBoxColumn
+        '
+        Me.OwnerDataGridViewTextBoxColumn.DataPropertyName = "owner"
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.OwnerDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle16
+        Me.OwnerDataGridViewTextBoxColumn.HeaderText = "Patient"
+        Me.OwnerDataGridViewTextBoxColumn.Name = "OwnerDataGridViewTextBoxColumn"
+        Me.OwnerDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ReasonDataGridViewTextBoxColumn
+        '
+        Me.ReasonDataGridViewTextBoxColumn.DataPropertyName = "reason"
+        Me.ReasonDataGridViewTextBoxColumn.HeaderText = "Reason for Vist"
+        Me.ReasonDataGridViewTextBoxColumn.Name = "ReasonDataGridViewTextBoxColumn"
+        Me.ReasonDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'StaffDataGridViewTextBoxColumn
+        '
+        Me.StaffDataGridViewTextBoxColumn.DataPropertyName = "staff"
+        Me.StaffDataGridViewTextBoxColumn.HeaderText = "Requested Staff"
+        Me.StaffDataGridViewTextBoxColumn.Name = "StaffDataGridViewTextBoxColumn"
+        Me.StaffDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'EmailDataGridViewTextBoxColumn1
+        '
+        Me.EmailDataGridViewTextBoxColumn1.DataPropertyName = "email"
+        Me.EmailDataGridViewTextBoxColumn1.HeaderText = "Email"
+        Me.EmailDataGridViewTextBoxColumn1.Name = "EmailDataGridViewTextBoxColumn1"
+        Me.EmailDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'PhoneDataGridViewTextBoxColumn
+        '
+        Me.PhoneDataGridViewTextBoxColumn.DataPropertyName = "phone"
+        Me.PhoneDataGridViewTextBoxColumn.HeaderText = "Phone"
+        Me.PhoneDataGridViewTextBoxColumn.Name = "PhoneDataGridViewTextBoxColumn"
+        Me.PhoneDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ApptdateDataGridViewTextBoxColumn
+        '
+        Me.ApptdateDataGridViewTextBoxColumn.DataPropertyName = "appt_date"
+        Me.ApptdateDataGridViewTextBoxColumn.HeaderText = "Appointment"
+        Me.ApptdateDataGridViewTextBoxColumn.Name = "ApptdateDataGridViewTextBoxColumn"
+        Me.ApptdateDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PrefcontactDataGridViewTextBoxColumn
+        '
+        Me.PrefcontactDataGridViewTextBoxColumn.DataPropertyName = "pref_contact"
+        Me.PrefcontactDataGridViewTextBoxColumn.HeaderText = "Contact Method"
+        Me.PrefcontactDataGridViewTextBoxColumn.Name = "PrefcontactDataGridViewTextBoxColumn"
+        Me.PrefcontactDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NotesDataGridViewTextBoxColumn
+        '
+        Me.NotesDataGridViewTextBoxColumn.DataPropertyName = "notes"
+        Me.NotesDataGridViewTextBoxColumn.HeaderText = "Added Notes"
+        Me.NotesDataGridViewTextBoxColumn.Name = "NotesDataGridViewTextBoxColumn"
+        Me.NotesDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NotesDataGridViewTextBoxColumn.Width = 200
+        '
+        'AppointmentsBindingSource
+        '
+        Me.AppointmentsBindingSource.DataMember = "appointments"
+        Me.AppointmentsBindingSource.DataSource = Me.VetClinicRHDataSetBindingSource
         '
         'Label23
         '
@@ -1029,6 +1283,10 @@ Partial Class frmMain
         Me.Label20.TabIndex = 1
         Me.Label20.Text = "Enter Credentials"
         '
+        'AppointmentsTableAdapter
+        '
+        Me.AppointmentsTableAdapter.ClearBeforeFill = True
+        '
         'frmMain
         '
         Me.AcceptButton = Me.btnInsertOwner
@@ -1067,6 +1325,8 @@ Partial Class frmMain
         CType(Me.VetsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.apptList.ResumeLayout(False)
         Me.apptList.PerformLayout()
+        CType(Me.dgAppts, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AppointmentsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OwnersBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.adminBox.ResumeLayout(False)
         Me.adminBox.PerformLayout()
@@ -1162,4 +1422,28 @@ Partial Class frmMain
     Friend WithEvents Label22 As Label
     Friend WithEvents btnX As Button
     Friend WithEvents Label23 As Label
+    Friend WithEvents dgAppts As DataGridView
+    Friend WithEvents AppointmentsBindingSource As BindingSource
+    Friend WithEvents AppointmentsTableAdapter As _Vet_Clinic_RHDataSetTableAdapters.appointmentsTableAdapter
+    Friend WithEvents OwnerDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ReasonDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents StaffDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents EmailDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents PhoneDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ApptdateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PrefcontactDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NotesDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Label26 As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents txtSelectApptStaff As TextBox
+    Friend WithEvents txtSelectApptDate As TextBox
+    Friend WithEvents txtSelectApptOwner As TextBox
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label27 As Label
+    Friend WithEvents Label28 As Label
+    Friend WithEvents txtSelectApptReason As TextBox
+    Friend WithEvents emailOpen As Button
+    Friend WithEvents btnPrintText As Button
+    Friend WithEvents Email As Label
+    Friend WithEvents txtSelectApptEmail As TextBox
 End Class

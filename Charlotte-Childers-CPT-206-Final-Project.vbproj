@@ -104,6 +104,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="emailForm.Designer.vb">
+      <DependentUpon>emailForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="emailForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="emailForm.resx">
+      <DependentUpon>emailForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
@@ -208,10 +217,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Vet-Clinic-RH.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Vet-Clinic-RH_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Vet-Clinic-RH.mdf</DependentUpon>
     </Content>
   </ItemGroup>

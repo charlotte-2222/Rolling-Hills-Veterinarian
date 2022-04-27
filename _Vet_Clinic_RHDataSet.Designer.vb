@@ -2320,8 +2320,6 @@ Partial Public Class _Vet_Clinic_RHDataSet
     Partial Public Class appointmentsDataTable
         Inherits Global.System.Data.TypedTableBase(Of appointmentsRow)
         
-        Private columnapptID As Global.System.Data.DataColumn
-        
         Private columnowner As Global.System.Data.DataColumn
         
         Private columnreason As Global.System.Data.DataColumn
@@ -2372,14 +2370,6 @@ Partial Public Class _Vet_Clinic_RHDataSet
             MyBase.New(info, context)
             Me.InitVars
         End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property apptIDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnapptID
-            End Get
-        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -2484,7 +2474,7 @@ Partial Public Class _Vet_Clinic_RHDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Overloads Function AddappointmentsRow(ByVal owner As String, ByVal reason As String, ByVal staff As String, ByVal pref_contact As String, ByVal email As String, ByVal phone As String, ByVal appt_date As String, ByVal notes As String) As appointmentsRow
             Dim rowappointmentsRow As appointmentsRow = CType(Me.NewRow,appointmentsRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, owner, reason, staff, pref_contact, email, phone, appt_date, notes}
+            Dim columnValuesArray() As Object = New Object() {owner, reason, staff, pref_contact, email, phone, appt_date, notes}
             rowappointmentsRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowappointmentsRow)
             Return rowappointmentsRow
@@ -2492,8 +2482,8 @@ Partial Public Class _Vet_Clinic_RHDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindByapptID(ByVal apptID As Integer) As appointmentsRow
-            Return CType(Me.Rows.Find(New Object() {apptID}),appointmentsRow)
+        Public Function FindByowner(ByVal owner As String) As appointmentsRow
+            Return CType(Me.Rows.Find(New Object() {owner}),appointmentsRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2513,7 +2503,6 @@ Partial Public Class _Vet_Clinic_RHDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnapptID = MyBase.Columns("apptID")
             Me.columnowner = MyBase.Columns("owner")
             Me.columnreason = MyBase.Columns("reason")
             Me.columnstaff = MyBase.Columns("staff")
@@ -2527,8 +2516,6 @@ Partial Public Class _Vet_Clinic_RHDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnapptID = New Global.System.Data.DataColumn("apptID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnapptID)
             Me.columnowner = New Global.System.Data.DataColumn("owner", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnowner)
             Me.columnreason = New Global.System.Data.DataColumn("reason", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -2545,13 +2532,9 @@ Partial Public Class _Vet_Clinic_RHDataSet
             MyBase.Columns.Add(Me.columnappt_date)
             Me.columnnotes = New Global.System.Data.DataColumn("notes", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnnotes)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnapptID}, true))
-            Me.columnapptID.AutoIncrement = true
-            Me.columnapptID.AutoIncrementSeed = -1
-            Me.columnapptID.AutoIncrementStep = -1
-            Me.columnapptID.AllowDBNull = false
-            Me.columnapptID.ReadOnly = true
-            Me.columnapptID.Unique = true
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnowner}, true))
+            Me.columnowner.AllowDBNull = false
+            Me.columnowner.Unique = true
             Me.columnowner.MaxLength = 50
             Me.columnreason.MaxLength = 80
             Me.columnstaff.MaxLength = 80
@@ -3358,24 +3341,9 @@ Partial Public Class _Vet_Clinic_RHDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property apptID() As Integer
-            Get
-                Return CType(Me(Me.tableappointments.apptIDColumn),Integer)
-            End Get
-            Set
-                Me(Me.tableappointments.apptIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property owner() As String
             Get
-                Try 
-                    Return CType(Me(Me.tableappointments.ownerColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'owner' in table 'appointments' is DBNull.", e)
-                End Try
+                Return CType(Me(Me.tableappointments.ownerColumn),String)
             End Get
             Set
                 Me(Me.tableappointments.ownerColumn) = value
@@ -3486,18 +3454,6 @@ Partial Public Class _Vet_Clinic_RHDataSet
                 Me(Me.tableappointments.notesColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsownerNull() As Boolean
-            Return Me.IsNull(Me.tableappointments.ownerColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetownerNull()
-            Me(Me.tableappointments.ownerColumn) = Global.System.Convert.DBNull
-        End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
@@ -6203,7 +6159,6 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "appointments"
-            tableMapping.ColumnMappings.Add("apptID", "apptID")
             tableMapping.ColumnMappings.Add("owner", "owner")
             tableMapping.ColumnMappings.Add("reason", "reason")
             tableMapping.ColumnMappings.Add("staff", "staff")
@@ -6215,19 +6170,16 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[appointments] WHERE (([apptID] = @Original_apptID) AND ((@IsNu"& _ 
-                "ll_owner = 1 AND [owner] IS NULL) OR ([owner] = @Original_owner)) AND ((@IsNull_"& _ 
-                "reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull"& _ 
-                "_staff = 1 AND [staff] IS NULL) OR ([staff] = @Original_staff)) AND ((@IsNull_pr"& _ 
-                "ef_contact = 1 AND [pref_contact] IS NULL) OR ([pref_contact] = @Original_pref_c"& _ 
-                "ontact)) AND ((@IsNull_email = 1 AND [email] IS NULL) OR ([email] = @Original_em"& _ 
-                "ail)) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone"& _ 
-                ")) AND ((@IsNull_appt_date = 1 AND [appt_date] IS NULL) OR ([appt_date] = @Origi"& _ 
-                "nal_appt_date)) AND ((@IsNull_notes = 1 AND [notes] IS NULL) OR ([notes] = @Orig"& _ 
-                "inal_notes)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [appointments] WHERE (([owner] = @Original_owner) AND ((@IsNull_reaso"& _ 
+                "n = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNull_staf"& _ 
+                "f = 1 AND [staff] IS NULL) OR ([staff] = @Original_staff)) AND ((@IsNull_pref_co"& _ 
+                "ntact = 1 AND [pref_contact] IS NULL) OR ([pref_contact] = @Original_pref_contac"& _ 
+                "t)) AND ((@IsNull_email = 1 AND [email] IS NULL) OR ([email] = @Original_email))"& _ 
+                " AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phone)) AN"& _ 
+                "D ((@IsNull_appt_date = 1 AND [appt_date] IS NULL) OR ([appt_date] = @Original_a"& _ 
+                "ppt_date)) AND ((@IsNull_notes = 1 AND [notes] IS NULL) OR ([notes] = @Original_"& _ 
+                "notes)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_apptID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "apptID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_owner", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "owner", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_owner", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "owner", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_reason", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_reason", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -6245,11 +6197,10 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_notes", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "notes", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[appointments] ([owner], [reason], [staff], [pref_contact], [em"& _ 
-                "ail], [phone], [appt_date], [notes]) VALUES (@owner, @reason, @staff, @pref_cont"& _ 
-                "act, @email, @phone, @appt_date, @notes);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT apptID, owner, reason, staff, "& _ 
-                "pref_contact, email, phone, appt_date, notes FROM appointments WHERE (apptID = S"& _ 
-                "COPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [appointments] ([owner], [reason], [staff], [pref_contact], [email], "& _ 
+                "[phone], [appt_date], [notes]) VALUES (@owner, @reason, @staff, @pref_contact, @"& _ 
+                "email, @phone, @appt_date, @notes);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT owner, reason, staff, pref_contact, "& _ 
+                "email, phone, appt_date, notes FROM appointments WHERE (owner = @owner)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@owner", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "owner", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@reason", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -6261,19 +6212,18 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@notes", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "notes", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[appointments] SET [owner] = @owner, [reason] = @reason, [staff] = @"& _ 
-                "staff, [pref_contact] = @pref_contact, [email] = @email, [phone] = @phone, [appt"& _ 
-                "_date] = @appt_date, [notes] = @notes WHERE (([apptID] = @Original_apptID) AND ("& _ 
-                "(@IsNull_owner = 1 AND [owner] IS NULL) OR ([owner] = @Original_owner)) AND ((@I"& _ 
-                "sNull_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@"& _ 
-                "IsNull_staff = 1 AND [staff] IS NULL) OR ([staff] = @Original_staff)) AND ((@IsN"& _ 
-                "ull_pref_contact = 1 AND [pref_contact] IS NULL) OR ([pref_contact] = @Original_"& _ 
-                "pref_contact)) AND ((@IsNull_email = 1 AND [email] IS NULL) OR ([email] = @Origi"& _ 
-                "nal_email)) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original"& _ 
-                "_phone)) AND ((@IsNull_appt_date = 1 AND [appt_date] IS NULL) OR ([appt_date] = "& _ 
-                "@Original_appt_date)) AND ((@IsNull_notes = 1 AND [notes] IS NULL) OR ([notes] ="& _ 
-                " @Original_notes)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT apptID, owner, reason, staff, pref_contact, email, "& _ 
-                "phone, appt_date, notes FROM appointments WHERE (apptID = @apptID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [appointments] SET [owner] = @owner, [reason] = @reason, [staff] = @staff,"& _ 
+                " [pref_contact] = @pref_contact, [email] = @email, [phone] = @phone, [appt_date]"& _ 
+                " = @appt_date, [notes] = @notes WHERE (([owner] = @Original_owner) AND ((@IsNull"& _ 
+                "_reason = 1 AND [reason] IS NULL) OR ([reason] = @Original_reason)) AND ((@IsNul"& _ 
+                "l_staff = 1 AND [staff] IS NULL) OR ([staff] = @Original_staff)) AND ((@IsNull_p"& _ 
+                "ref_contact = 1 AND [pref_contact] IS NULL) OR ([pref_contact] = @Original_pref_"& _ 
+                "contact)) AND ((@IsNull_email = 1 AND [email] IS NULL) OR ([email] = @Original_e"& _ 
+                "mail)) AND ((@IsNull_phone = 1 AND [phone] IS NULL) OR ([phone] = @Original_phon"& _ 
+                "e)) AND ((@IsNull_appt_date = 1 AND [appt_date] IS NULL) OR ([appt_date] = @Orig"& _ 
+                "inal_appt_date)) AND ((@IsNull_notes = 1 AND [notes] IS NULL) OR ([notes] = @Ori"& _ 
+                "ginal_notes)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT owner, reason, staff, pref_contact, email, phone, appt_d"& _ 
+                "ate, notes FROM appointments WHERE (owner = @owner)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@owner", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "owner", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@reason", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -6283,8 +6233,6 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@phone", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "phone", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@appt_date", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "appt_date", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@notes", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "notes", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_apptID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "apptID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_owner", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "owner", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_owner", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "owner", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_reason", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_reason", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "reason", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -6300,7 +6248,6 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_appt_date", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "appt_date", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_notes", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "notes", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_notes", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "notes", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@apptID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "apptID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6316,8 +6263,8 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT apptID, owner, reason, staff, pref_contact, email, phone, appt_date, notes"& _ 
-                " FROM dbo.appointments"
+            Me._commandCollection(0).CommandText = "SELECT owner, reason, staff, pref_contact, email, phone, appt_date, notes FROM ap"& _ 
+                "pointments"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -6377,63 +6324,60 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_apptID As Integer, ByVal Original_owner As String, ByVal Original_reason As String, ByVal Original_staff As String, ByVal Original_pref_contact As String, ByVal Original_email As String, ByVal Original_phone As String, ByVal Original_appt_date As String, ByVal Original_notes As String) As Integer
-            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_apptID,Integer)
+        Public Overloads Overridable Function Delete(ByVal Original_owner As String, ByVal Original_reason As String, ByVal Original_staff As String, ByVal Original_pref_contact As String, ByVal Original_email As String, ByVal Original_phone As String, ByVal Original_appt_date As String, ByVal Original_notes As String) As Integer
             If (Original_owner Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_owner")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_owner,String)
+            End If
+            If (Original_reason Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_owner,String)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_reason,String)
             End If
-            If (Original_reason Is Nothing) Then
+            If (Original_staff Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_reason,String)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_staff,String)
             End If
-            If (Original_staff Is Nothing) Then
+            If (Original_pref_contact Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_staff,String)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_pref_contact,String)
             End If
-            If (Original_pref_contact Is Nothing) Then
+            If (Original_email Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_pref_contact,String)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_email,String)
             End If
-            If (Original_email Is Nothing) Then
+            If (Original_phone Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_email,String)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_phone,String)
             End If
-            If (Original_phone Is Nothing) Then
+            If (Original_appt_date Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_phone,String)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_appt_date,String)
             End If
-            If (Original_appt_date Is Nothing) Then
+            If (Original_notes Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_appt_date,String)
-            End If
-            If (Original_notes Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_notes,String)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_notes,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -6456,7 +6400,7 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
         Public Overloads Overridable Function Insert(ByVal owner As String, ByVal reason As String, ByVal staff As String, ByVal pref_contact As String, ByVal email As String, ByVal phone As String, ByVal appt_date As String, ByVal notes As String) As Integer
             If (owner Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("owner")
             Else
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(owner,String)
             End If
@@ -6523,7 +6467,6 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
                     ByVal phone As String,  _
                     ByVal appt_date As String,  _
                     ByVal notes As String,  _
-                    ByVal Original_apptID As Integer,  _
                     ByVal Original_owner As String,  _
                     ByVal Original_reason As String,  _
                     ByVal Original_staff As String,  _
@@ -6531,10 +6474,9 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
                     ByVal Original_email As String,  _
                     ByVal Original_phone As String,  _
                     ByVal Original_appt_date As String,  _
-                    ByVal Original_notes As String,  _
-                    ByVal apptID As Integer) As Integer
+                    ByVal Original_notes As String) As Integer
             If (owner Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Throw New Global.System.ArgumentNullException("owner")
             Else
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(owner,String)
             End If
@@ -6573,64 +6515,60 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = CType(notes,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_apptID,Integer)
             If (Original_owner Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_owner")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_owner,String)
+            End If
+            If (Original_reason Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_owner,String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_reason,String)
             End If
-            If (Original_reason Is Nothing) Then
+            If (Original_staff Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_reason,String)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_staff,String)
             End If
-            If (Original_staff Is Nothing) Then
+            If (Original_pref_contact Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_staff,String)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_pref_contact,String)
             End If
-            If (Original_pref_contact Is Nothing) Then
+            If (Original_email Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_pref_contact,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_email,String)
             End If
-            If (Original_email Is Nothing) Then
+            If (Original_phone Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_email,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_phone,String)
             End If
-            If (Original_phone Is Nothing) Then
+            If (Original_appt_date Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_phone,String)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_appt_date,String)
             End If
-            If (Original_appt_date Is Nothing) Then
+            If (Original_notes Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_appt_date,String)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_notes,String)
             End If
-            If (Original_notes Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_notes,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(25).Value = CType(apptID,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -6650,25 +6588,8 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update( _
-                    ByVal owner As String,  _
-                    ByVal reason As String,  _
-                    ByVal staff As String,  _
-                    ByVal pref_contact As String,  _
-                    ByVal email As String,  _
-                    ByVal phone As String,  _
-                    ByVal appt_date As String,  _
-                    ByVal notes As String,  _
-                    ByVal Original_apptID As Integer,  _
-                    ByVal Original_owner As String,  _
-                    ByVal Original_reason As String,  _
-                    ByVal Original_staff As String,  _
-                    ByVal Original_pref_contact As String,  _
-                    ByVal Original_email As String,  _
-                    ByVal Original_phone As String,  _
-                    ByVal Original_appt_date As String,  _
-                    ByVal Original_notes As String) As Integer
-            Return Me.Update(owner, reason, staff, pref_contact, email, phone, appt_date, notes, Original_apptID, Original_owner, Original_reason, Original_staff, Original_pref_contact, Original_email, Original_phone, Original_appt_date, Original_notes, Original_apptID)
+        Public Overloads Overridable Function Update(ByVal reason As String, ByVal staff As String, ByVal pref_contact As String, ByVal email As String, ByVal phone As String, ByVal appt_date As String, ByVal notes As String, ByVal Original_owner As String, ByVal Original_reason As String, ByVal Original_staff As String, ByVal Original_pref_contact As String, ByVal Original_email As String, ByVal Original_phone As String, ByVal Original_appt_date As String, ByVal Original_notes As String) As Integer
+            Return Me.Update(Original_owner, reason, staff, pref_contact, email, phone, appt_date, notes, Original_owner, Original_reason, Original_staff, Original_pref_contact, Original_email, Original_phone, Original_appt_date, Original_notes)
         End Function
     End Class
     
