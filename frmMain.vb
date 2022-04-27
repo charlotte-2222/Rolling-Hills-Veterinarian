@@ -19,14 +19,29 @@ Imports System.IO
 Public Class frmMain
 
     Public Overloads Property DialogResult As DialogResult
-
+    '
+    Protected Overrides Function ProcessCmdKey(ByRef msg As System.Windows.Forms.Message,
+                                           ByVal keyData As System.Windows.Forms.Keys) _
+                                           As Boolean
+        ''Due to the amount of form calling functions, it is simply not feasible to allow
+        ''for an accept key. 
+        If msg.WParam.ToInt32() = CInt(Keys.Enter) Then
+            SendKeys.Send("{Tab}")
+            Return True
+        End If
+        Return MyBase.ProcessCmdKey(msg, keyData)
+    End Function
 
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        ''This whole area can be minimized
+
+        'TODO: This line of code loads data into the '_Vet_Clinic_RHDataSet.login' table. You can move, or remove it, as needed.
+        Me.LoginTableAdapter.Fill(Me._Vet_Clinic_RHDataSet.login)
         'TODO: This line of code loads data into the '_Vet_Clinic_RHDataSet.appointments' table. You can move, or remove it, as needed.
         Me.AppointmentsTableAdapter.Fill(Me._Vet_Clinic_RHDataSet.appointments)
         'TODO: This line of code loads data into the '_Vet_Clinic_RHDataSet.visits' table. You can move, or remove it, as needed.
-
         'TODO: This line of code loads data into the '_Vet_Clinic_RHDataSet.vets' table. You can move, or remove it, as needed.
         Me.VetsTableAdapter.Fill(Me._Vet_Clinic_RHDataSet.vets)
         'TODO: This line of code loads data into the '_Vet_Clinic_RHDataSet.owners' table. You can move, or remove it, as needed.
@@ -38,7 +53,6 @@ Public Class frmMain
         AssignValidation(Me.txtOwnerFullName, ValidationType.Only_Characters)
         AssignValidation(Me.txtPetName, ValidationType.Only_Characters)
         '' pre-establishes lst item details for patient file
-
         lstDataCommit.Items.Add("Owner Name: " & txtOwnerFullName.Text & "")
         lstDataCommit.Items.Add("Email: " & txtOwnerEmail.Text & "")
         lstDataCommit.Items.Add("DoB: " & txtOwnerDoB.Text & "")
@@ -46,8 +60,6 @@ Public Class frmMain
         lstDataCommit.Items.Add("Pet Age: " & txtPetAge.Text & "")
         lstDataCommit.Items.Add("Species: " & txtPetBreed.Text & "")
         lstDataCommit.Items.Add("Escape Attempts: " & txtEscapeAttempts.Text & "")
-
-
 
     End Sub
 
@@ -62,32 +74,25 @@ Public Class frmMain
         Try
 
             Using cmd As New SqlCommand("INSERT INTO owners (full_name, age, email) VALUES (@fullname,@age,@email)", conn)
-
-
                 cmd.Parameters.Add("@fullname", SqlDbType.VarChar).Value = txtOwnerFullName.Text
                 cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = txtOwnerEmail.Text
                 cmd.Parameters.Add("@age", SqlDbType.Date).Value = txtOwnerDoB.Text
 
-
-
+                ' Open connection and execute SQL Insertion
                 conn.Open()
                 cmd.ExecuteNonQuery()
                 conn.Close()
-
-
 
             End Using
 
 
             Using cmd As New SqlCommand("INSERT INTO animals (animal_name, escape_attempts, species, age) VALUES (@name,@escape,@spec, @age)", conn)
-
                 cmd.Parameters.Add("@name", SqlDbType.VarChar).Value = txtPetName.Text
                 cmd.Parameters.Add("@age", SqlDbType.VarChar).Value = txtPetAge.Text
                 cmd.Parameters.Add("@spec", SqlDbType.VarChar).Value = txtPetBreed.Text
                 cmd.Parameters.Add("@escape", SqlDbType.VarChar).Value = txtEscapeAttempts.Text
 
-
-
+                ' Open connection and execute SQL Insertion
                 conn.Open()
                 cmd.ExecuteNonQuery()
                 conn.Close()
@@ -108,8 +113,10 @@ Public Class frmMain
             'Will reset to original posistion
             lstDataCommit.Items.Clear()
             btnLoadList.PerformClick()
-        Catch
-            MessageBox.Show("Ensure all Fields are entered correctly!")
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
             txtOwnerFullName.Clear()
             txtOwnerEmail.Clear()
             txtOwnerDoB.Clear()
@@ -176,48 +183,42 @@ Public Class frmMain
         Dim db As String = Path.Combine(Directory.GetCurrentDirectory(), "Vet-Clinic-RH.mdf")
         Dim conn As New SqlConnection("Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" & (db) & ";Integrated Security=True")
 
+        Try
+
+            Using cmd As New SqlCommand("INSERT INTO appointments (owner, email, phone, pref_contact, reason, appt_date, staff, notes) VALUES (@owner,@email,@phone,@contact,@reason,@date, @staff, @notes )", conn)
+                cmd.Parameters.Add("@owner", SqlDbType.VarChar).Value = txtPetOwner.Text
+                cmd.Parameters.Add("@reason", SqlDbType.VarChar).Value = comboReasonForVisit.SelectedItem.ToString()
+                cmd.Parameters.Add("@staff", SqlDbType.VarChar).Value = comboStaff.SelectedValue.ToString()
+                cmd.Parameters.Add("@contact", SqlDbType.VarChar).Value = comboContacts.SelectedItem.ToString()
+                cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = txtApptOwnerEmail.Text
+                cmd.Parameters.Add("@phone", SqlDbType.VarChar).Value = txtInvisPhone.Text
+                cmd.Parameters.Add("@date", SqlDbType.VarChar).Value = apptDate.Value.Date & " - " & apptTime.Value.TimeOfDay.ToString()
+                cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = txtAddDetails.Text
+
+                ' Open connection and execute SQL Insertion
+                conn.Open()
+                cmd.ExecuteNonQuery()
+                conn.Close()
 
 
-        Using cmd As New SqlCommand("INSERT INTO appointments (owner, email, phone, pref_contact, reason, appt_date, staff, notes) VALUES (@owner,@email,@phone,@contact,@reason,@date, @staff, @notes )", conn)
+            End Using
+            MessageBox.Show("Appointment made!")
+        Catch ex As Exception
 
+            MsgBox(ex.Message)
 
-
-            cmd.Parameters.Add("@owner", SqlDbType.VarChar).Value = txtPetOwner.Text
-            cmd.Parameters.Add("@reason", SqlDbType.VarChar).Value = comboReasonForVisit.SelectedItem.ToString()
-            cmd.Parameters.Add("@staff", SqlDbType.VarChar).Value = comboStaff.SelectedValue.ToString()
-            cmd.Parameters.Add("@contact", SqlDbType.VarChar).Value = comboContacts.SelectedItem.ToString()
-            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = txtApptOwnerEmail.Text
-            cmd.Parameters.Add("@phone", SqlDbType.VarChar).Value = txtInvisPhone.Text
-            cmd.Parameters.Add("@date", SqlDbType.VarChar).Value = apptDate.Value.Date & " - " & apptTime.Value.TimeOfDay.ToString()
-            cmd.Parameters.Add("@notes", SqlDbType.VarChar).Value = txtAddDetails.Text
-
-
-            conn.Open()
-            cmd.ExecuteNonQuery()
-            conn.Close()
-
-
-
-
-
-
-        End Using
-
-        MessageBox.Show("Appointment made!")
-
-
+        End Try
 
     End Sub
 
     Private Sub btnLogOut_Click(sender As Object, e As EventArgs) Handles btnLogOut.Click
+        ' Log out and return to Log-In screen
         Me.Hide()
         login.Show()
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         ''Clears Patient creation textboxes
-
-
 
         txtEscapeAttempts.Clear()
         txtOwnerFullName.Clear()
@@ -231,12 +232,10 @@ Public Class frmMain
         'Will reset to original posistion
         lstDataCommit.Items.Clear()
         btnLoadList.PerformClick()
-
-
     End Sub
 
     Private Sub btnLoadList_Click(sender As Object, e As EventArgs) Handles btnLoadList.Click
-
+        'Loads data
         lstDataCommit.Items.Clear()
         lstDataCommit.Items.Add("Owner Name: " & txtOwnerFullName.Text & "")
         lstDataCommit.Items.Add("Email: " & txtOwnerEmail.Text & "")
@@ -248,14 +247,17 @@ Public Class frmMain
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        'Timer and date
         lblTime.Text = DateTime.Now.ToString("F")
     End Sub
 
     Private Sub btnAdminCtrl_Click(sender As Object, e As EventArgs) Handles btnAdminCtrl.Click
+        ' Admin box visibility
         adminBox.Visible = True
     End Sub
 
     Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        ' Form closing event
         If MessageBox.Show("Are you sure you wish to exit?", "Exiting...", MessageBoxButtons.YesNo) = DialogResult.Yes Then
             login.Close()
             Application.Exit()
@@ -265,11 +267,12 @@ Public Class frmMain
     End Sub
 
     Private Sub btnAdminSubmit_Click(sender As Object, e As EventArgs) Handles btnAdminSubmit.Click
+
+        'Simple check / balance to assure user credentials in the system.
+
         Dim user, pass As String
         user = "Admin"
         pass = "Admin"
-
-
 
         If txtAdmUser.Text = user And txtAdmPass.Text = pass Then
             Admin.Show()
@@ -295,6 +298,7 @@ Public Class frmMain
     End Sub
 
     Private Sub btnX_Click(sender As Object, e As EventArgs) Handles btnX.Click
+        'Will close admin box on-click
         adminBox.Visible = False
     End Sub
 
@@ -313,6 +317,8 @@ Public Class frmMain
     End Sub
 
     Private Sub emailOpen_Click(sender As Object, e As EventArgs) Handles emailOpen.Click
+        'This is the button to open the email client, additionally information will precompile
+        'For employee convenience
         emailForm.Show()
         emailForm.txtMailTo.Text = txtSelectApptEmail.Text
         emailForm.txtMailMessage.Text =
@@ -333,13 +339,15 @@ Public Class frmMain
     Private Sub btnPrintText_Click(sender As Object, e As EventArgs) Handles btnPrintText.Click
         Dim path As String = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)
 
-        'Dim editedName As String = txtSelectApptOwner.Text.Replace(" ", "-")
-        'Dim fileEdit As String = editedName & "_" & txtSelectApptDate.Text
-
+        ' This is where the text file handler is located
+        ' The information is built based on user selection
+        ' And then printed
+        ' If there is an error, an exception message will print
         Try
-            Dim editedName As String = txtSelectApptOwner.Text.Replace(" ", "-")
-            Dim editedDate As String = txtSelectApptDate.Text.Replace("/", "-")
-            Dim fileEdit As String = editedName & "_" & editedDate
+            Dim Name As String = txtSelectApptOwner.Text
+            Dim Edited As String = Name.Substring(Name.IndexOf(" ") + 1)
+            Dim editedReason As String = txtSelectApptReason.Text.Replace(" ", "-")
+            Dim fileEdit As String = Edited & "_" & editedReason
             Dim strFile As String = "" & path & "\" & fileEdit & ".txt"
 
             MsgBox(strFile)
@@ -355,11 +363,20 @@ Public Class frmMain
                                & "Date of Appointment: " & txtSelectApptDate.Text & vbNewLine _
                                & "Patient Email: " & txtSelectApptEmail.Text & vbNewLine _
                                & "-----------------------" & vbNewLine _
-                               & "Appointment File Printed: " & DateTime.Now.ToString("F"))
+                               & "Appointment File Printed: " & DateTime.Now.ToString("F") _
+                               & vbNewLine _
+                               & vbNewLine _
+                               & "Account Entry: " & loginUser.Text
+                               )
             objWriter.Close()
 
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub btnUpApptRef_Click(sender As Object, e As EventArgs) Handles btnUpApptRef.Click
+        'Refreshes the Appointment table on-click
+        Me.AppointmentsTableAdapter.Fill(Me._Vet_Clinic_RHDataSet.appointments)
     End Sub
 End Class

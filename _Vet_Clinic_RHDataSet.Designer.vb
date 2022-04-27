@@ -5774,11 +5774,11 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[vets] WHERE (([vets_id] = @Original_vets_id) AND ((@IsNull_vet"& _ 
-                "s_name = 1 AND [vets_name] IS NULL) OR ([vets_name] = @Original_vets_name)) AND "& _ 
-                "((@IsNull_age = 1 AND [age] IS NULL) OR ([age] = @Original_age)) AND ((@IsNull_d"& _ 
-                "ate_of_graduation = 1 AND [date_of_graduation] IS NULL) OR ([date_of_graduation]"& _ 
-                " = @Original_date_of_graduation)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [vets] WHERE (([vets_id] = @Original_vets_id) AND ((@IsNull_vets_name"& _ 
+                " = 1 AND [vets_name] IS NULL) OR ([vets_name] = @Original_vets_name)) AND ((@IsN"& _ 
+                "ull_age = 1 AND [age] IS NULL) OR ([age] = @Original_age)) AND ((@IsNull_date_of"& _ 
+                "_graduation = 1 AND [date_of_graduation] IS NULL) OR ([date_of_graduation] = @Or"& _ 
+                "iginal_date_of_graduation)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_vets_id", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vets_id", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_vets_name", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vets_name", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -5789,22 +5789,22 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_date_of_graduation", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "date_of_graduation", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[vets] ([vets_name], [age], [date_of_graduation]) VALUES (@vets"& _ 
-                "_name, @age, @date_of_graduation);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT vets_id, vets_name, age, date_of_grad"& _ 
-                "uation FROM vets WHERE (vets_id = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [vets] ([vets_name], [age], [date_of_graduation]) VALUES (@vets_name,"& _ 
+                " @age, @date_of_graduation);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT vets_id, vets_name, age, date_of_graduation"& _ 
+                " FROM vets WHERE (vets_id = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@vets_name", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vets_name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@age", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "age", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@date_of_graduation", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "date_of_graduation", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[vets] SET [vets_name] = @vets_name, [age] = @age, [date_of_graduati"& _ 
-                "on] = @date_of_graduation WHERE (([vets_id] = @Original_vets_id) AND ((@IsNull_v"& _ 
-                "ets_name = 1 AND [vets_name] IS NULL) OR ([vets_name] = @Original_vets_name)) AN"& _ 
-                "D ((@IsNull_age = 1 AND [age] IS NULL) OR ([age] = @Original_age)) AND ((@IsNull"& _ 
-                "_date_of_graduation = 1 AND [date_of_graduation] IS NULL) OR ([date_of_graduatio"& _ 
-                "n] = @Original_date_of_graduation)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT vets_id, vets_name, age, date_of_g"& _ 
-                "raduation FROM vets WHERE (vets_id = @vets_id)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [vets] SET [vets_name] = @vets_name, [age] = @age, [date_of_graduation] = "& _ 
+                "@date_of_graduation WHERE (([vets_id] = @Original_vets_id) AND ((@IsNull_vets_na"& _ 
+                "me = 1 AND [vets_name] IS NULL) OR ([vets_name] = @Original_vets_name)) AND ((@I"& _ 
+                "sNull_age = 1 AND [age] IS NULL) OR ([age] = @Original_age)) AND ((@IsNull_date_"& _ 
+                "of_graduation = 1 AND [date_of_graduation] IS NULL) OR ([date_of_graduation] = @"& _ 
+                "Original_date_of_graduation)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT vets_id, vets_name, age, date_of_graduat"& _ 
+                "ion FROM vets WHERE (vets_id = @vets_id)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@vets_name", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "vets_name", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@age", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "age", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5829,11 +5829,17 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT vets_id, vets_name, age, date_of_graduation FROM dbo.vets"
+            Me._commandCollection(0).CommandText = "SELECT        vets_id, vets_name, age, date_of_graduation"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            vets"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+                "WHERE        (vets_name <> 'Admin Account')"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT age, date_of_graduation, vets_id, vets_name FROM vets WHERE (vets_name <> "& _ 
+                "'Admin Account')"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5858,6 +5864,19 @@ Namespace _Vet_Clinic_RHDataSetTableAdapters
             Dim dataTable As _Vet_Clinic_RHDataSet.vetsDataTable = New _Vet_Clinic_RHDataSet.vetsDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillWithoutAdmin(ByVal dataTable As _Vet_Clinic_RHDataSet.vetsDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

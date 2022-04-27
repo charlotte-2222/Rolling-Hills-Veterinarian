@@ -24,11 +24,11 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.logLbl = New System.Windows.Forms.Label()
         Me.rhTabSuite = New System.Windows.Forms.TabControl()
         Me.ownerPage = New System.Windows.Forms.TabPage()
@@ -140,6 +140,9 @@ Partial Class frmMain
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.AppointmentsTableAdapter = New Charlotte_Childers_CPT_206_Final_Project._Vet_Clinic_RHDataSetTableAdapters.appointmentsTableAdapter()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.LoginTableAdapter = New Charlotte_Childers_CPT_206_Final_Project._Vet_Clinic_RHDataSetTableAdapters.loginTableAdapter()
+        Me.btnUpApptRef = New System.Windows.Forms.Button()
         Me.rhTabSuite.SuspendLayout()
         Me.ownerPage.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -221,16 +224,19 @@ Partial Class frmMain
         Me.btnLoadList.Size = New System.Drawing.Size(114, 45)
         Me.btnLoadList.TabIndex = 22
         Me.btnLoadList.Text = "Load Items"
+        Me.ToolTip1.SetToolTip(Me.btnLoadList, "Reload Data")
         Me.btnLoadList.UseVisualStyleBackColor = True
         '
         'btnClear
         '
+        Me.btnClear.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnClear.Font = New System.Drawing.Font("Segoe UI Semibold", 10.25!, System.Drawing.FontStyle.Bold)
         Me.btnClear.Location = New System.Drawing.Point(299, 549)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(114, 45)
         Me.btnClear.TabIndex = 21
         Me.btnClear.Text = "Clear All"
+        Me.ToolTip1.SetToolTip(Me.btnClear, "Clear All Entries")
         Me.btnClear.UseVisualStyleBackColor = True
         '
         'lstDataCommit
@@ -240,6 +246,7 @@ Partial Class frmMain
         Me.lstDataCommit.Name = "lstDataCommit"
         Me.lstDataCommit.Size = New System.Drawing.Size(193, 160)
         Me.lstDataCommit.TabIndex = 20
+        Me.ToolTip1.SetToolTip(Me.lstDataCommit, "This is a collection of data to commit")
         '
         'Label11
         '
@@ -260,6 +267,7 @@ Partial Class frmMain
         Me.Label9.Size = New System.Drawing.Size(143, 25)
         Me.Label9.TabIndex = 18
         Me.Label9.Text = "Pet Information"
+        Me.ToolTip1.SetToolTip(Me.Label9, "Enter Pet Info")
         '
         'txtPetBreed
         '
@@ -341,6 +349,7 @@ Partial Class frmMain
         Me.btnInsertOwner.Size = New System.Drawing.Size(114, 45)
         Me.btnInsertOwner.TabIndex = 9
         Me.btnInsertOwner.Text = "Complete"
+        Me.ToolTip1.SetToolTip(Me.btnInsertOwner, "Click Here to Insert Record")
         Me.btnInsertOwner.UseVisualStyleBackColor = True
         '
         'txtOwnerEmail
@@ -406,6 +415,7 @@ Partial Class frmMain
         Me.ownLabel.Size = New System.Drawing.Size(172, 25)
         Me.ownLabel.TabIndex = 0
         Me.ownLabel.Text = "Owner Information"
+        Me.ToolTip1.SetToolTip(Me.ownLabel, "Enter Owner Info")
         '
         'TabPage2
         '
@@ -683,9 +693,9 @@ Partial Class frmMain
         'OwnersidDataGridViewTextBoxColumn
         '
         Me.OwnersidDataGridViewTextBoxColumn.DataPropertyName = "owners_id"
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle17.ForeColor = System.Drawing.Color.Red
-        Me.OwnersidDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Red
+        Me.OwnersidDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
         Me.OwnersidDataGridViewTextBoxColumn.HeaderText = "ID"
         Me.OwnersidDataGridViewTextBoxColumn.Name = "OwnersidDataGridViewTextBoxColumn"
         Me.OwnersidDataGridViewTextBoxColumn.ReadOnly = True
@@ -693,8 +703,8 @@ Partial Class frmMain
         'FullnameDataGridViewTextBoxColumn
         '
         Me.FullnameDataGridViewTextBoxColumn.DataPropertyName = "full_name"
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.FullnameDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.FullnameDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle7
         Me.FullnameDataGridViewTextBoxColumn.HeaderText = "Owner"
         Me.FullnameDataGridViewTextBoxColumn.Name = "FullnameDataGridViewTextBoxColumn"
         Me.FullnameDataGridViewTextBoxColumn.ReadOnly = True
@@ -702,10 +712,10 @@ Partial Class frmMain
         'AgeDataGridViewTextBoxColumn
         '
         Me.AgeDataGridViewTextBoxColumn.DataPropertyName = "age"
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle19.Format = "d"
-        DataGridViewCellStyle19.NullValue = Nothing
-        Me.AgeDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.Format = "d"
+        DataGridViewCellStyle8.NullValue = Nothing
+        Me.AgeDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle8
         Me.AgeDataGridViewTextBoxColumn.HeaderText = "DOB"
         Me.AgeDataGridViewTextBoxColumn.Name = "AgeDataGridViewTextBoxColumn"
         Me.AgeDataGridViewTextBoxColumn.ReadOnly = True
@@ -714,8 +724,8 @@ Partial Class frmMain
         '
         Me.EmailDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.EmailDataGridViewTextBoxColumn.DataPropertyName = "email"
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.EmailDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.EmailDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle9
         Me.EmailDataGridViewTextBoxColumn.HeaderText = "Email"
         Me.EmailDataGridViewTextBoxColumn.Name = "EmailDataGridViewTextBoxColumn"
         Me.EmailDataGridViewTextBoxColumn.ReadOnly = True
@@ -850,6 +860,7 @@ Partial Class frmMain
         '
         'apptList
         '
+        Me.apptList.Controls.Add(Me.btnUpApptRef)
         Me.apptList.Controls.Add(Me.Email)
         Me.apptList.Controls.Add(Me.txtSelectApptEmail)
         Me.apptList.Controls.Add(Me.emailOpen)
@@ -1025,8 +1036,8 @@ Partial Class frmMain
         'OwnerDataGridViewTextBoxColumn
         '
         Me.OwnerDataGridViewTextBoxColumn.DataPropertyName = "owner"
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.OwnerDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.OwnerDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle10
         Me.OwnerDataGridViewTextBoxColumn.HeaderText = "Patient"
         Me.OwnerDataGridViewTextBoxColumn.Name = "OwnerDataGridViewTextBoxColumn"
         Me.OwnerDataGridViewTextBoxColumn.ReadOnly = True
@@ -1122,6 +1133,7 @@ Partial Class frmMain
         Me.btnLogOut.Size = New System.Drawing.Size(81, 35)
         Me.btnLogOut.TabIndex = 28
         Me.btnLogOut.Text = "Log Out"
+        Me.ToolTip1.SetToolTip(Me.btnLogOut, "Log Out")
         Me.btnLogOut.UseVisualStyleBackColor = False
         '
         'loginUser
@@ -1178,6 +1190,7 @@ Partial Class frmMain
         Me.btnAdminCtrl.Size = New System.Drawing.Size(140, 33)
         Me.btnAdminCtrl.TabIndex = 32
         Me.btnAdminCtrl.Text = "Admin Controls"
+        Me.ToolTip1.SetToolTip(Me.btnAdminCtrl, "Open Admin Control Panel")
         Me.btnAdminCtrl.UseVisualStyleBackColor = False
         '
         'adminBox
@@ -1225,6 +1238,7 @@ Partial Class frmMain
         Me.btnAdminSubmit.Size = New System.Drawing.Size(80, 30)
         Me.btnAdminSubmit.TabIndex = 29
         Me.btnAdminSubmit.Text = "Submit"
+        Me.ToolTip1.SetToolTip(Me.btnAdminSubmit, "Submit Admin Credentials")
         Me.btnAdminSubmit.UseVisualStyleBackColor = False
         '
         'txtAdmPass
@@ -1287,14 +1301,34 @@ Partial Class frmMain
         '
         Me.AppointmentsTableAdapter.ClearBeforeFill = True
         '
+        'LoginTableAdapter
+        '
+        Me.LoginTableAdapter.ClearBeforeFill = True
+        '
+        'btnUpApptRef
+        '
+        Me.btnUpApptRef.BackColor = System.Drawing.Color.PaleVioletRed
+        Me.btnUpApptRef.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.btnUpApptRef.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine
+        Me.btnUpApptRef.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
+        Me.btnUpApptRef.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUpApptRef.Font = New System.Drawing.Font("Malgun Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpApptRef.ForeColor = System.Drawing.Color.White
+        Me.btnUpApptRef.Location = New System.Drawing.Point(474, 380)
+        Me.btnUpApptRef.Name = "btnUpApptRef"
+        Me.btnUpApptRef.Size = New System.Drawing.Size(64, 25)
+        Me.btnUpApptRef.TabIndex = 49
+        Me.btnUpApptRef.Text = "Refresh"
+        Me.btnUpApptRef.UseVisualStyleBackColor = False
+        '
         'frmMain
         '
-        Me.AcceptButton = Me.btnInsertOwner
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
-        Me.ClientSize = New System.Drawing.Size(1076, 640)
+        Me.CancelButton = Me.btnClear
+        Me.ClientSize = New System.Drawing.Size(1096, 658)
         Me.Controls.Add(Me.adminBox)
         Me.Controls.Add(Me.btnAdminCtrl)
         Me.Controls.Add(Me.lblTime)
@@ -1446,4 +1480,7 @@ Partial Class frmMain
     Friend WithEvents btnPrintText As Button
     Friend WithEvents Email As Label
     Friend WithEvents txtSelectApptEmail As TextBox
+    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents LoginTableAdapter As _Vet_Clinic_RHDataSetTableAdapters.loginTableAdapter
+    Friend WithEvents btnUpApptRef As Button
 End Class
