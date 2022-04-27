@@ -191,6 +191,7 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="README.md" />
     <None Include="_Vet_Clinic_RHDataSet.xsc">
       <DependentUpon>_Vet_Clinic_RHDataSet.xsd</DependentUpon>
     </None>
