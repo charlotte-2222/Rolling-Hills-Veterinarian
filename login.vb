@@ -1,4 +1,11 @@
-﻿Option Explicit On
+﻿'Charlotte Childers
+'Matthew Alimagham
+'CPT-206 | Visual Basic, Final Project
+'Rolling Hills Veterinary Clinic Application
+'04/27/22
+'This project is a Vet-Technician portal - More information can be read in the README.md file. 
+
+Option Explicit On
 Option Strict On
 Option Infer Off
 

@@ -22,6 +22,7 @@ Partial Class emailForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.txtMailFrom = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtMailMessage = New System.Windows.Forms.RichTextBox()
@@ -33,6 +34,7 @@ Partial Class emailForm
         Me.btnMailSend = New System.Windows.Forms.Button()
         Me.logLbl = New System.Windows.Forms.Label()
         Me.btnCloseEmail = New System.Windows.Forms.Button()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'txtMailFrom
@@ -43,7 +45,9 @@ Partial Class emailForm
         Me.txtMailFrom.ReadOnly = True
         Me.txtMailFrom.Size = New System.Drawing.Size(271, 25)
         Me.txtMailFrom.TabIndex = 0
+        Me.txtMailFrom.TabStop = False
         Me.txtMailFrom.Text = "rollinghillsvetservices@gmail.com"
+        Me.ToolTip1.SetToolTip(Me.txtMailFrom, "Prefilled Company Email")
         '
         'Label1
         '
@@ -65,6 +69,7 @@ Partial Class emailForm
         Me.txtMailMessage.Size = New System.Drawing.Size(502, 353)
         Me.txtMailMessage.TabIndex = 2
         Me.txtMailMessage.Text = ""
+        Me.ToolTip1.SetToolTip(Me.txtMailMessage, " Prefilled message - Additions can be made")
         '
         'Label2
         '
@@ -108,8 +113,9 @@ Partial Class emailForm
         Me.txtMailSubject.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
         Me.txtMailSubject.Name = "txtMailSubject"
         Me.txtMailSubject.Size = New System.Drawing.Size(300, 25)
-        Me.txtMailSubject.TabIndex = 6
+        Me.txtMailSubject.TabIndex = 0
         Me.txtMailSubject.Text = "RH | Info Regarding Your Appointment"
+        Me.ToolTip1.SetToolTip(Me.txtMailSubject, "Prefilled Subject")
         '
         'txtMailTo
         '
@@ -117,7 +123,8 @@ Partial Class emailForm
         Me.txtMailTo.Margin = New System.Windows.Forms.Padding(5, 4, 5, 4)
         Me.txtMailTo.Name = "txtMailTo"
         Me.txtMailTo.Size = New System.Drawing.Size(302, 25)
-        Me.txtMailTo.TabIndex = 7
+        Me.txtMailTo.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.txtMailTo, "Prefilled Email" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Can be changed" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "or void if owner not selected)")
         '
         'btnMailSend
         '
@@ -131,8 +138,9 @@ Partial Class emailForm
         Me.btnMailSend.Location = New System.Drawing.Point(273, 593)
         Me.btnMailSend.Name = "btnMailSend"
         Me.btnMailSend.Size = New System.Drawing.Size(87, 41)
-        Me.btnMailSend.TabIndex = 29
+        Me.btnMailSend.TabIndex = 3
         Me.btnMailSend.Text = "Send"
+        Me.ToolTip1.SetToolTip(Me.btnMailSend, "Send email")
         Me.btnMailSend.UseVisualStyleBackColor = False
         '
         'logLbl
@@ -160,6 +168,7 @@ Partial Class emailForm
         Me.btnCloseEmail.Size = New System.Drawing.Size(26, 26)
         Me.btnCloseEmail.TabIndex = 31
         Me.btnCloseEmail.Text = "X"
+        Me.ToolTip1.SetToolTip(Me.btnCloseEmail, "Exit Email Form")
         Me.btnCloseEmail.UseVisualStyleBackColor = False
         '
         'emailForm
@@ -204,4 +213,5 @@ Partial Class emailForm
     Friend WithEvents btnMailSend As Button
     Friend WithEvents logLbl As Label
     Friend WithEvents btnCloseEmail As Button
+    Friend WithEvents ToolTip1 As ToolTip
 End Class

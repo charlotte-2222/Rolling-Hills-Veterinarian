@@ -1,4 +1,10 @@
-﻿Imports System.Net.Mail
+﻿'Charlotte Childers
+'Matthew Alimagham
+'CPT-206 | Visual Basic, Final Project
+'Rolling Hills Veterinary Clinic Application
+'04/27/22
+'This project is a Vet-Technician portal - More information can be read in the README.md file. 
+Imports System.Net.Mail
 Public Class emailForm
     Private Sub email_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

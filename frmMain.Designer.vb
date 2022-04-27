@@ -98,6 +98,7 @@ Partial Class frmMain
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.apptList = New System.Windows.Forms.TabPage()
+        Me.btnUpApptRef = New System.Windows.Forms.Button()
         Me.Email = New System.Windows.Forms.Label()
         Me.txtSelectApptEmail = New System.Windows.Forms.TextBox()
         Me.emailOpen = New System.Windows.Forms.Button()
@@ -142,7 +143,6 @@ Partial Class frmMain
         Me.AppointmentsTableAdapter = New Charlotte_Childers_CPT_206_Final_Project._Vet_Clinic_RHDataSetTableAdapters.appointmentsTableAdapter()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.LoginTableAdapter = New Charlotte_Childers_CPT_206_Final_Project._Vet_Clinic_RHDataSetTableAdapters.loginTableAdapter()
-        Me.btnUpApptRef = New System.Windows.Forms.Button()
         Me.rhTabSuite.SuspendLayout()
         Me.ownerPage.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -178,7 +178,7 @@ Partial Class frmMain
         Me.rhTabSuite.Controls.Add(Me.ownerPage)
         Me.rhTabSuite.Controls.Add(Me.TabPage2)
         Me.rhTabSuite.Controls.Add(Me.apptList)
-        Me.rhTabSuite.Location = New System.Drawing.Point(522, 12)
+        Me.rhTabSuite.Location = New System.Drawing.Point(542, 31)
         Me.rhTabSuite.Name = "rhTabSuite"
         Me.rhTabSuite.SelectedIndex = 0
         Me.rhTabSuite.Size = New System.Drawing.Size(554, 626)
@@ -471,6 +471,7 @@ Partial Class frmMain
         Me.apptTime.ShowUpDown = True
         Me.apptTime.Size = New System.Drawing.Size(101, 20)
         Me.apptTime.TabIndex = 37
+        Me.ToolTip1.SetToolTip(Me.apptTime, "Choose Appointment Time")
         '
         'apptDate
         '
@@ -480,6 +481,7 @@ Partial Class frmMain
         Me.apptDate.Name = "apptDate"
         Me.apptDate.Size = New System.Drawing.Size(148, 20)
         Me.apptDate.TabIndex = 36
+        Me.ToolTip1.SetToolTip(Me.apptDate, "Choose Appointment Date")
         Me.apptDate.Value = New Date(2022, 4, 13, 0, 0, 0, 0)
         '
         'Label10
@@ -500,6 +502,7 @@ Partial Class frmMain
         Me.txtApptOwnerEmail.ReadOnly = True
         Me.txtApptOwnerEmail.Size = New System.Drawing.Size(131, 20)
         Me.txtApptOwnerEmail.TabIndex = 34
+        Me.ToolTip1.SetToolTip(Me.txtApptOwnerEmail, "Selected Owner's Email")
         '
         'Label4
         '
@@ -518,6 +521,7 @@ Partial Class frmMain
         Me.txtInvisPhone.Name = "txtInvisPhone"
         Me.txtInvisPhone.Size = New System.Drawing.Size(126, 20)
         Me.txtInvisPhone.TabIndex = 32
+        Me.txtInvisPhone.Text = "Enter Phone Number"
         Me.txtInvisPhone.Visible = False
         '
         'lblInvisPhone
@@ -545,6 +549,7 @@ Partial Class frmMain
         Me.btnRefresh.Size = New System.Drawing.Size(64, 25)
         Me.btnRefresh.TabIndex = 30
         Me.btnRefresh.Text = "Refresh"
+        Me.ToolTip1.SetToolTip(Me.btnRefresh, "Refresh Table")
         Me.btnRefresh.UseVisualStyleBackColor = False
         '
         'TxtboxEmailToolStrip
@@ -576,6 +581,7 @@ Partial Class frmMain
         Me.TxtboxEmailToolStripButton.Name = "TxtboxEmailToolStripButton"
         Me.TxtboxEmailToolStripButton.Size = New System.Drawing.Size(23, 22)
         Me.TxtboxEmailToolStripButton.Text = "🗸"
+        Me.TxtboxEmailToolStripButton.ToolTipText = "Click the Checkmark to search by email records"
         '
         'BindingNavigator1
         '
@@ -689,6 +695,7 @@ Partial Class frmMain
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(535, 127)
         Me.DataGridView1.TabIndex = 28
+        Me.ToolTip1.SetToolTip(Me.DataGridView1, "Layout of Owners")
         '
         'OwnersidDataGridViewTextBoxColumn
         '
@@ -744,6 +751,7 @@ Partial Class frmMain
         Me.btnInsert.Size = New System.Drawing.Size(147, 35)
         Me.btnInsert.TabIndex = 27
         Me.btnInsert.Text = "Make Appointment"
+        Me.ToolTip1.SetToolTip(Me.btnInsert, "Create New Appointment")
         Me.btnInsert.UseVisualStyleBackColor = False
         '
         'txtPetOwner
@@ -754,6 +762,7 @@ Partial Class frmMain
         Me.txtPetOwner.ReadOnly = True
         Me.txtPetOwner.Size = New System.Drawing.Size(131, 20)
         Me.txtPetOwner.TabIndex = 25
+        Me.ToolTip1.SetToolTip(Me.txtPetOwner, "Selected Owner")
         '
         'Label12
         '
@@ -773,6 +782,7 @@ Partial Class frmMain
         Me.txtAddDetails.Size = New System.Drawing.Size(310, 175)
         Me.txtAddDetails.TabIndex = 20
         Me.txtAddDetails.Text = ""
+        Me.ToolTip1.SetToolTip(Me.txtAddDetails, "Extra Notes for Appointment")
         '
         'Label18
         '
@@ -793,6 +803,7 @@ Partial Class frmMain
         Me.comboStaff.Name = "comboStaff"
         Me.comboStaff.Size = New System.Drawing.Size(151, 21)
         Me.comboStaff.TabIndex = 18
+        Me.ToolTip1.SetToolTip(Me.comboStaff, "Listing of Staff Members")
         Me.comboStaff.ValueMember = "vets_name"
         '
         'VetsBindingSource
@@ -818,6 +829,7 @@ Partial Class frmMain
         Me.comboContacts.Name = "comboContacts"
         Me.comboContacts.Size = New System.Drawing.Size(93, 21)
         Me.comboContacts.TabIndex = 16
+        Me.ToolTip1.SetToolTip(Me.comboContacts, "Enter Preferred Contact Method")
         '
         'comboReasonForVisit
         '
@@ -827,6 +839,7 @@ Partial Class frmMain
         Me.comboReasonForVisit.Name = "comboReasonForVisit"
         Me.comboReasonForVisit.Size = New System.Drawing.Size(161, 21)
         Me.comboReasonForVisit.TabIndex = 15
+        Me.ToolTip1.SetToolTip(Me.comboReasonForVisit, "Reason for Owner's Appointment")
         '
         'Label16
         '
@@ -884,6 +897,23 @@ Partial Class frmMain
         Me.apptList.Text = "Upcoming Appointments"
         Me.apptList.UseVisualStyleBackColor = True
         '
+        'btnUpApptRef
+        '
+        Me.btnUpApptRef.BackColor = System.Drawing.Color.PaleVioletRed
+        Me.btnUpApptRef.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.btnUpApptRef.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine
+        Me.btnUpApptRef.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
+        Me.btnUpApptRef.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUpApptRef.Font = New System.Drawing.Font("Malgun Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpApptRef.ForeColor = System.Drawing.Color.White
+        Me.btnUpApptRef.Location = New System.Drawing.Point(474, 380)
+        Me.btnUpApptRef.Name = "btnUpApptRef"
+        Me.btnUpApptRef.Size = New System.Drawing.Size(64, 25)
+        Me.btnUpApptRef.TabIndex = 49
+        Me.btnUpApptRef.Text = "Refresh"
+        Me.ToolTip1.SetToolTip(Me.btnUpApptRef, "Refresh Appointment Table")
+        Me.btnUpApptRef.UseVisualStyleBackColor = False
+        '
         'Email
         '
         Me.Email.AutoSize = True
@@ -916,6 +946,7 @@ Partial Class frmMain
         Me.emailOpen.Size = New System.Drawing.Size(114, 35)
         Me.emailOpen.TabIndex = 46
         Me.emailOpen.Text = "Email Patient"
+        Me.ToolTip1.SetToolTip(Me.emailOpen, "Open Email Client with Pre-Filled Info")
         Me.emailOpen.UseVisualStyleBackColor = False
         '
         'btnPrintText
@@ -931,6 +962,7 @@ Partial Class frmMain
         Me.btnPrintText.Size = New System.Drawing.Size(93, 35)
         Me.btnPrintText.TabIndex = 45
         Me.btnPrintText.Text = "Print File?"
+        Me.ToolTip1.SetToolTip(Me.btnPrintText, "Create Text File for Staff Use")
         Me.btnPrintText.UseVisualStyleBackColor = False
         '
         'Label28
@@ -1018,6 +1050,7 @@ Partial Class frmMain
         Me.Label25.Size = New System.Drawing.Size(164, 20)
         Me.Label25.TabIndex = 35
         Me.Label25.Text = "Selected Appointment:"
+        Me.ToolTip1.SetToolTip(Me.Label25, "Prefilled Information on Appointment")
         '
         'dgAppts
         '
@@ -1032,6 +1065,7 @@ Partial Class frmMain
         Me.dgAppts.ReadOnly = True
         Me.dgAppts.Size = New System.Drawing.Size(534, 330)
         Me.dgAppts.TabIndex = 8
+        Me.ToolTip1.SetToolTip(Me.dgAppts, "List of Appointments Made")
         '
         'OwnerDataGridViewTextBoxColumn
         '
@@ -1304,22 +1338,6 @@ Partial Class frmMain
         'LoginTableAdapter
         '
         Me.LoginTableAdapter.ClearBeforeFill = True
-        '
-        'btnUpApptRef
-        '
-        Me.btnUpApptRef.BackColor = System.Drawing.Color.PaleVioletRed
-        Me.btnUpApptRef.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
-        Me.btnUpApptRef.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumAquamarine
-        Me.btnUpApptRef.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke
-        Me.btnUpApptRef.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnUpApptRef.Font = New System.Drawing.Font("Malgun Gothic", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUpApptRef.ForeColor = System.Drawing.Color.White
-        Me.btnUpApptRef.Location = New System.Drawing.Point(474, 380)
-        Me.btnUpApptRef.Name = "btnUpApptRef"
-        Me.btnUpApptRef.Size = New System.Drawing.Size(64, 25)
-        Me.btnUpApptRef.TabIndex = 49
-        Me.btnUpApptRef.Text = "Refresh"
-        Me.btnUpApptRef.UseVisualStyleBackColor = False
         '
         'frmMain
         '

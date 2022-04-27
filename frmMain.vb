@@ -3,8 +3,7 @@
 'CPT-206 | Visual Basic, Final Project
 'Rolling Hills Veterinary Clinic Application
 '04/27/22
-'This project is a Vet-Technician portal for creating patient accounts,
-'Creating appointments, and 
+'This project is a Vet-Technician portal - More information can be read in the README.md file. 
 
 Option Explicit On
 Option Strict On
@@ -159,7 +158,7 @@ Public Class frmMain
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         ''simple refresh
         Me.OwnersTableAdapter.Fill(Me._Vet_Clinic_RHDataSet.owners)
-
+        Me.VetsTableAdapter.Fill(Me._Vet_Clinic_RHDataSet.vets)
     End Sub
 
     Private Sub comboContacts_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboContacts.SelectedIndexChanged

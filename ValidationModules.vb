@@ -1,5 +1,19 @@
-﻿Imports System.Text.RegularExpressions
+﻿'Charlotte Childers
+'Matthew Alimagham
+'CPT-206 | Visual Basic, Final Project
+'Rolling Hills Veterinary Clinic Application
+'04/27/22
+'This project is a Vet-Technician portal - More information can be read in the README.md file. 
+
+Imports System.Text.RegularExpressions
 Module KeyValidation
+
+    ''' <summary>
+    ''' This a series of validation keys
+    ''' that I have set up for later use in the VetApp.
+    ''' 
+    ''' Primarily the Email / Phone validation will have most importance.
+    ''' </summary>
     Public Enum ValidationType
         Only_Numbers = 1
         Only_Characters = 2

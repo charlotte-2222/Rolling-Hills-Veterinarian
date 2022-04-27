@@ -45,6 +45,7 @@ Partial Class Admin
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.ID = New System.Windows.Forms.Label()
         Me.btnRefresh = New System.Windows.Forms.Button()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.dgVetStaff, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.VetsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me._Vet_Clinic_RHDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,6 +64,7 @@ Partial Class Admin
         Me.btnCloseAdmin.Size = New System.Drawing.Size(81, 35)
         Me.btnCloseAdmin.TabIndex = 29
         Me.btnCloseAdmin.Text = "Close"
+        Me.ToolTip1.SetToolTip(Me.btnCloseAdmin, "Close Form")
         Me.btnCloseAdmin.UseVisualStyleBackColor = False
         '
         'dgVetStaff
@@ -132,6 +134,7 @@ Partial Class Admin
         Me.btnAddRecord.Size = New System.Drawing.Size(96, 34)
         Me.btnAddRecord.TabIndex = 31
         Me.btnAddRecord.Text = "Add Staff"
+        Me.ToolTip1.SetToolTip(Me.btnAddRecord, "Add Staff from Info Entered")
         Me.btnAddRecord.UseVisualStyleBackColor = False
         '
         'txtDoB
@@ -140,7 +143,8 @@ Partial Class Admin
         Me.txtDoB.Location = New System.Drawing.Point(632, 45)
         Me.txtDoB.Name = "txtDoB"
         Me.txtDoB.Size = New System.Drawing.Size(118, 20)
-        Me.txtDoB.TabIndex = 34
+        Me.txtDoB.TabIndex = 1
+        Me.ToolTip1.SetToolTip(Me.txtDoB, "New Staff DoB")
         '
         'txtGradDate
         '
@@ -148,7 +152,8 @@ Partial Class Admin
         Me.txtGradDate.Location = New System.Drawing.Point(632, 78)
         Me.txtGradDate.Name = "txtGradDate"
         Me.txtGradDate.Size = New System.Drawing.Size(118, 20)
-        Me.txtGradDate.TabIndex = 37
+        Me.txtGradDate.TabIndex = 2
+        Me.ToolTip1.SetToolTip(Me.txtGradDate, "New Staff Graduation")
         '
         'txtStaffFullName
         '
@@ -156,7 +161,8 @@ Partial Class Admin
         Me.txtStaffFullName.Location = New System.Drawing.Point(623, 12)
         Me.txtStaffFullName.Name = "txtStaffFullName"
         Me.txtStaffFullName.Size = New System.Drawing.Size(127, 20)
-        Me.txtStaffFullName.TabIndex = 32
+        Me.txtStaffFullName.TabIndex = 0
+        Me.ToolTip1.SetToolTip(Me.txtStaffFullName, "Enter New Staff Full Name")
         '
         'Label3
         '
@@ -219,6 +225,7 @@ Partial Class Admin
         Me.btnEdit.Size = New System.Drawing.Size(96, 34)
         Me.btnEdit.TabIndex = 39
         Me.btnEdit.Text = "Edit Staff"
+        Me.ToolTip1.SetToolTip(Me.btnEdit, "Edit provided Staff ID")
         Me.btnEdit.UseVisualStyleBackColor = False
         '
         'txtID
@@ -227,8 +234,9 @@ Partial Class Admin
         Me.txtID.Location = New System.Drawing.Point(632, 111)
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(51, 20)
-        Me.txtID.TabIndex = 41
+        Me.txtID.TabIndex = 3
         Me.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ToolTip1.SetToolTip(Me.txtID, "- ID is auto-generated if creating" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "- If Editing user will need to enter ID #")
         '
         'ID
         '
@@ -256,6 +264,7 @@ Partial Class Admin
         Me.btnRefresh.Size = New System.Drawing.Size(96, 34)
         Me.btnRefresh.TabIndex = 43
         Me.btnRefresh.Text = "Refresh"
+        Me.ToolTip1.SetToolTip(Me.btnRefresh, "Refresh Table")
         Me.btnRefresh.UseVisualStyleBackColor = False
         '
         'Admin
@@ -311,4 +320,5 @@ Partial Class Admin
     Friend WithEvents txtID As TextBox
     Friend WithEvents ID As Label
     Friend WithEvents btnRefresh As Button
+    Friend WithEvents ToolTip1 As ToolTip
 End Class
